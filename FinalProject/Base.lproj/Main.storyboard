@@ -13,7 +13,7 @@
         <!--Week-->
         <scene sceneID="tB7-Kf-OQ4">
             <objects>
-                <viewController id="Izs-c6-I6v" customClass="WeekTableViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Izs-c6-I6v" customClass="WeeksViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nx0-wr-j5u">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,6 +40,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="days" destination="zL3-5F-gQk" id="BMX-eY-7Xm"/>
+                                            <segue destination="G7v-BA-VRK" kind="show" id="lOo-og-ca1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -57,6 +58,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Week" id="HVA-BM-7Ip"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableview" destination="a9R-Oa-OMy" id="b1e-Fq-nai"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qZQ-DA-vD0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -70,30 +74,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8vu-as-Bck" userLabel="Breakfast">
-                                <rect key="frame" x="67" y="20" width="241" height="173"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pki-Fn-VzV" userLabel="Lunch">
-                                <rect key="frame" x="67" y="223" width="241" height="128"/>
+                                <rect key="frame" x="67" y="174" width="241" height="128"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="NcO-d6-vHY"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B9y-Fm-rdD" userLabel="Dinner">
-                                <rect key="frame" x="67" y="381" width="241" height="128"/>
+                                <rect key="frame" x="67" y="332" width="241" height="128"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="B1t-Rj-z2t"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7LV-01-e9E" userLabel="Dessert">
-                                <rect key="frame" x="67" y="539" width="241" height="128"/>
+                                <rect key="frame" x="67" y="490" width="241" height="128"/>
                                 <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="MlW-SQ-NKi"/>
                                 </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8vu-as-Bck" userLabel="Breakfast">
+                                <rect key="frame" x="67" y="64" width="241" height="80"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -102,6 +106,7 @@
                             <constraint firstItem="7O9-Yv-L3C" firstAttribute="trailing" secondItem="B9y-Fm-rdD" secondAttribute="trailing" constant="67" id="5oS-3o-dtx"/>
                             <constraint firstItem="8vu-as-Bck" firstAttribute="leading" secondItem="7O9-Yv-L3C" secondAttribute="leading" constant="67" id="6cU-1m-owK"/>
                             <constraint firstItem="7O9-Yv-L3C" firstAttribute="trailing" secondItem="pki-Fn-VzV" secondAttribute="trailing" constant="67" id="9Bf-PA-FiD"/>
+                            <constraint firstItem="8vu-as-Bck" firstAttribute="top" secondItem="7O9-Yv-L3C" secondAttribute="top" id="HN2-7l-gZ5"/>
                             <constraint firstItem="7LV-01-e9E" firstAttribute="top" secondItem="B9y-Fm-rdD" secondAttribute="bottom" constant="30" id="Lcj-S7-4Fd"/>
                             <constraint firstItem="pki-Fn-VzV" firstAttribute="leading" secondItem="7O9-Yv-L3C" secondAttribute="leading" constant="67" id="PZM-8l-hj9"/>
                             <constraint firstItem="7O9-Yv-L3C" firstAttribute="trailing" secondItem="8vu-as-Bck" secondAttribute="trailing" constant="67" id="Yg3-uo-Zo1"/>
@@ -134,7 +139,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Dc-aH-dpn">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="CCC-yt-dzY">
@@ -345,7 +350,6 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="Izs-c6-I6v" kind="relationship" relationship="rootViewController" id="kg3-Mo-S93"/>
-                        <segue destination="G7v-BA-VRK" kind="show" id="OPJ-a3-uGX"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLV-28-a2d" userLabel="First Responder" sceneMemberID="firstResponder"/>

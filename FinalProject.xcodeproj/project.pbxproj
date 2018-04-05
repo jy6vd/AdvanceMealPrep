@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2301665E20585F1400BB68BC /* WeekTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2301665D20585F1400BB68BC /* WeekTableViewController.swift */; };
 		23E4722820584099004E4DB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E4722720584099004E4DB8 /* AppDelegate.swift */; };
 		23E4722A20584099004E4DB8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E4722920584099004E4DB8 /* ViewController.swift */; };
 		23E4722D20584099004E4DB8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23E4722B20584099004E4DB8 /* Main.storyboard */; };
@@ -15,6 +14,7 @@
 		23E4723220584099004E4DB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23E4723020584099004E4DB8 /* LaunchScreen.storyboard */; };
 		23E4723D20584099004E4DB8 /* FinalProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E4723C20584099004E4DB8 /* FinalProjectTests.swift */; };
 		23E4724820584099004E4DB8 /* FinalProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E4724720584099004E4DB8 /* FinalProjectUITests.swift */; };
+		23EAC2702076923100DA123E /* WeeksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EAC26F2076923100DA123E /* WeeksViewController.swift */; };
 		23FAB09E2073FCE90087F87F /* WeekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FAB09D2073FCE90087F87F /* WeekTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +36,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2301665D20585F1400BB68BC /* WeekTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTableViewController.swift; sourceTree = "<group>"; };
 		23E4722420584099004E4DB8 /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23E4722720584099004E4DB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23E4722920584099004E4DB8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +49,7 @@
 		23E4724320584099004E4DB8 /* FinalProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinalProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		23E4724720584099004E4DB8 /* FinalProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalProjectUITests.swift; sourceTree = "<group>"; };
 		23E4724920584099004E4DB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23EAC26F2076923100DA123E /* WeeksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeksViewController.swift; sourceTree = "<group>"; };
 		23FAB09D2073FCE90087F87F /* WeekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,8 +107,8 @@
 				23E4722E20584099004E4DB8 /* Assets.xcassets */,
 				23E4723020584099004E4DB8 /* LaunchScreen.storyboard */,
 				23E4723320584099004E4DB8 /* Info.plist */,
-				2301665D20585F1400BB68BC /* WeekTableViewController.swift */,
 				23FAB09D2073FCE90087F87F /* WeekTableViewCell.swift */,
+				23EAC26F2076923100DA123E /* WeeksViewController.swift */,
 			);
 			path = FinalProject;
 			sourceTree = "<group>";
@@ -267,8 +267,8 @@
 			files = (
 				23E4722A20584099004E4DB8 /* ViewController.swift in Sources */,
 				23FAB09E2073FCE90087F87F /* WeekTableViewCell.swift in Sources */,
+				23EAC2702076923100DA123E /* WeeksViewController.swift in Sources */,
 				23E4722820584099004E4DB8 /* AppDelegate.swift in Sources */,
-				2301665E20585F1400BB68BC /* WeekTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
