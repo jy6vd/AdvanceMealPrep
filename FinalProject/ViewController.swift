@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         var picture: UIImage
     }
     
-    var userRecipes: [Recipe]
+    var userRecipes: [Recipe] = []
     
     func loadRecipes(){}
     
@@ -43,3 +43,4 @@ class ViewController: UIViewController {
 
 }
 
+}
