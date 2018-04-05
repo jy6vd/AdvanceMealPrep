@@ -40,7 +40,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="days" destination="zL3-5F-gQk" id="BMX-eY-7Xm"/>
-                                            <segue destination="G7v-BA-VRK" kind="show" id="lOo-og-ca1"/>
+                                            <segue destination="G7v-BA-VRK" kind="show" identifier="mealSelection" id="lOo-og-ca1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -56,7 +56,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qw4-bZ-lPh"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Week" id="HVA-BM-7Ip"/>
+                    <navigationItem key="navigationItem" title="Week" id="HVA-BM-7Ip">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="f66-TS-SaE"/>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableview" destination="a9R-Oa-OMy" id="b1e-Fq-nai"/>
@@ -165,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ky8-Vu-CCQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2617" y="-500"/>
+            <point key="canvasLocation" x="3049" y="-447"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="j54-u6-CpI">
@@ -193,7 +195,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eQ3-66-LVU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2617" y="309"/>
+            <point key="canvasLocation" x="3049" y="338"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="eO8-Rr-0Yj">
@@ -221,7 +223,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9a-BX-CN0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2617" y="1169"/>
+            <point key="canvasLocation" x="3049" y="1178"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="PYb-vC-ih5">
@@ -249,7 +251,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JhD-ht-txH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2617" y="1978"/>
+            <point key="canvasLocation" x="3049" y="1974"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="0uo-gy-lpn">
@@ -297,7 +299,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oYI-gT-dda" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-495.19999999999999" y="1285.9070464767617"/>
+            <point key="canvasLocation" x="-1406" y="1286"/>
         </scene>
         <!--Ingredient-->
         <scene sceneID="Juw-81-FoY">

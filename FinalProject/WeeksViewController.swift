@@ -20,7 +20,9 @@ class WeeksViewController: UIViewController, UITableViewDataSource, UITableViewD
         // #warning Incomplete implementation, return the number of rows
         return days.count
     }
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dayCell", for: indexPath) as! WeekTableViewCell
