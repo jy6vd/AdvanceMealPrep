@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		23303C2E207D26AB0039C71B /* MealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23303C2D207D26AB0039C71B /* MealsViewController.swift */; };
 		23303C30207D26F00039C71B /* MealsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23303C2F207D26F00039C71B /* MealsTableViewCell.swift */; };
+		23C66369207DC1E600F74183 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C66368207DC1E600F74183 /* RecipeTableViewCell.swift */; };
+		23C6636B207DC1FA00F74183 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6636A207DC1FA00F74183 /* RecipeViewController.swift */; };
 		23E4722820584099004E4DB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E4722720584099004E4DB8 /* AppDelegate.swift */; };
 		23E4722A20584099004E4DB8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E4722920584099004E4DB8 /* ViewController.swift */; };
 		23E4722D20584099004E4DB8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23E4722B20584099004E4DB8 /* Main.storyboard */; };
@@ -40,6 +42,8 @@
 /* Begin PBXFileReference section */
 		23303C2D207D26AB0039C71B /* MealsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsViewController.swift; sourceTree = "<group>"; };
 		23303C2F207D26F00039C71B /* MealsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsTableViewCell.swift; sourceTree = "<group>"; };
+		23C66368207DC1E600F74183 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
+		23C6636A207DC1FA00F74183 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		23E4722420584099004E4DB8 /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23E4722720584099004E4DB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23E4722920584099004E4DB8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +119,8 @@
 				23EAC26F2076923100DA123E /* WeeksViewController.swift */,
 				23303C2D207D26AB0039C71B /* MealsViewController.swift */,
 				23303C2F207D26F00039C71B /* MealsTableViewCell.swift */,
+				23C66368207DC1E600F74183 /* RecipeTableViewCell.swift */,
+				23C6636A207DC1FA00F74183 /* RecipeViewController.swift */,
 			);
 			path = FinalProject;
 			sourceTree = "<group>";
@@ -274,6 +280,8 @@
 				23E4722A20584099004E4DB8 /* ViewController.swift in Sources */,
 				23FAB09E2073FCE90087F87F /* WeekTableViewCell.swift in Sources */,
 				23303C30207D26F00039C71B /* MealsTableViewCell.swift in Sources */,
+				23C66369207DC1E600F74183 /* RecipeTableViewCell.swift in Sources */,
+				23C6636B207DC1FA00F74183 /* RecipeViewController.swift in Sources */,
 				23303C2E207D26AB0039C71B /* MealsViewController.swift in Sources */,
 				23EAC2702076923100DA123E /* WeeksViewController.swift in Sources */,
 				23E4722820584099004E4DB8 /* AppDelegate.swift in Sources */,
