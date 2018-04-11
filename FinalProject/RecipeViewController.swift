@@ -39,6 +39,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! RecipeTableViewCell
         cell.foodTitle.text = "Donut"
         cell.foodImage.image = UIImage(named: "donut")
+        cell.calories.text = "Calories: 29 - 395"
         return cell
     }
 

@@ -152,23 +152,36 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pj1-L4-cvt">
-                                                    <rect key="frame" x="138" y="31" width="228" height="24"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <rect key="frame" x="132" y="11" width="207" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="xHy-SZ-2uw"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkc-VQ-ygT">
+                                                    <rect key="frame" x="132" y="48" width="149" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="Pj1-L4-cvt" secondAttribute="trailing" constant="9" id="28I-qA-9sB"/>
+                                                <constraint firstItem="dkc-VQ-ygT" firstAttribute="top" secondItem="Pj1-L4-cvt" secondAttribute="bottom" constant="-13" id="3pD-pg-DoG"/>
                                                 <constraint firstItem="8kQ-gY-ZBe" firstAttribute="top" secondItem="C6V-QG-QOM" secondAttribute="top" id="4uQ-Ro-DnL"/>
-                                                <constraint firstAttribute="bottom" secondItem="Pj1-L4-cvt" secondAttribute="bottom" constant="62.5" id="FnD-dR-lC2"/>
-                                                <constraint firstItem="Pj1-L4-cvt" firstAttribute="leading" secondItem="8kQ-gY-ZBe" secondAttribute="trailing" constant="18" id="STo-OY-0MS"/>
-                                                <constraint firstItem="Pj1-L4-cvt" firstAttribute="top" secondItem="C6V-QG-QOM" secondAttribute="top" constant="31" id="fkl-Yo-ugk"/>
+                                                <constraint firstAttribute="trailing" secondItem="dkc-VQ-ygT" secondAttribute="trailing" constant="94" id="TgX-U8-o0F"/>
+                                                <constraint firstAttribute="bottom" secondItem="dkc-VQ-ygT" secondAttribute="bottom" constant="48.5" id="Uci-DF-81g"/>
+                                                <constraint firstItem="Pj1-L4-cvt" firstAttribute="top" secondItem="C6V-QG-QOM" secondAttribute="top" constant="11" id="b9j-s7-2Wq"/>
+                                                <constraint firstItem="dkc-VQ-ygT" firstAttribute="leading" secondItem="8kQ-gY-ZBe" secondAttribute="trailing" constant="12" id="cQh-Lu-9Zc"/>
                                                 <constraint firstItem="8kQ-gY-ZBe" firstAttribute="leading" secondItem="C6V-QG-QOM" secondAttribute="leading" id="oPQ-HV-9eF"/>
                                                 <constraint firstAttribute="bottom" secondItem="8kQ-gY-ZBe" secondAttribute="bottom" id="q55-SW-YEw"/>
+                                                <constraint firstItem="Pj1-L4-cvt" firstAttribute="leading" secondItem="8kQ-gY-ZBe" secondAttribute="trailing" constant="12" id="sBo-0I-rF5"/>
+                                                <constraint firstAttribute="trailing" secondItem="Pj1-L4-cvt" secondAttribute="trailing" constant="36" id="yQg-FR-Jz6"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="calories" destination="dkc-VQ-ygT" id="X6K-hl-iPu"/>
                                             <outlet property="foodImage" destination="8kQ-gY-ZBe" id="deU-0v-a70"/>
                                             <outlet property="foodTitle" destination="Pj1-L4-cvt" id="syH-ui-WTv"/>
                                         </connections>
