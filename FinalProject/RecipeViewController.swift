@@ -10,6 +10,29 @@ import UIKit
 
 class RecipeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
+    struct Ingredient {
+        var title: String
+        var quantitiy: Double
+        var units: String
+    }
+    
+    struct Recipe {
+        var title: String
+        var description: String
+        var ingredients: [Ingredient]
+        var servingSize: Int
+        var picture: UIImage
+    }
+    
+    var userRecipes: [Recipe] = []
+    
+    func loadRecipes(){}
+    
+    func addRecipe(recipe: Recipe){
+        userRecipes.append(recipe)
+        
+    }
+    
     @IBOutlet weak var recipeTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
