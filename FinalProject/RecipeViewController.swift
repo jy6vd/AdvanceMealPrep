@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecipeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class RecipeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
 
     struct Ingredient {
         var title: String
@@ -31,11 +31,11 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     
     func loadRecipes(){
         allRecipes.append(Recipe(title: "Donut", description: "Sweet dessert", caloriesLow: 29, caloriesHigh: 395,
-                                 ingredients: ([Ingredient(title: "Wheat", quantitiy: 10, units: "oz")]),
-                                 servingSize: 1, picture: UIImage(named: "donut")!))
+            ingredients: ([Ingredient(title: "Wheat", quantitiy: 10, units: "oz")]),
+            servingSize: 1, picture: UIImage(named: "donut")!))
         allRecipes.append(Recipe(title: "Peas", description: "Sweet dessert", caloriesLow: 29, caloriesHigh: 395,
-                                 ingredients: ([Ingredient(title: "Wheat", quantitiy: 10, units: "oz")]),
-                                 servingSize: 1, picture: UIImage(named: "donut")!))
+            ingredients: ([Ingredient(title: "Wheat", quantitiy: 10, units: "oz")]),
+            servingSize: 1, picture: UIImage(named: "donut")!))
 
     }
     
@@ -44,19 +44,18 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
-    let searchBar = UISearchController(searchResultsController: nil)
     var filterRecipe = [Recipe]()
+    var isSearchingRecipe = false
     @IBOutlet weak var recipeTableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         recipeTableView.dataSource = self
         recipeTableView.delegate = self
-        searchBar.searchResultsUpdater = self
-        searchBar.obscuresBackgroundDuringPresentation = false
-        searchBar.searchBar.placeholder = "Search Recipe"
-        navigationItem.searchController = searchBar
-        definesPresentationContext = true
+        searchBar.delegate = self
+        
+        searchBar.returnKeyType = UIReturnKeyType.done
         loadRecipes()
 
         // Do any additional setup after loading the view.
@@ -71,11 +70,10 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearchBarFiltering() {
-            return 1
+        if(isSearchingRecipe){
+            return filterRecipe.count
         }
-        return 1
-        
+        return allRecipes.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160
@@ -85,9 +83,10 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! RecipeTableViewCell
         let recipe: Recipe
         
-        if isSearchBarFiltering() {
+        if(isSearchingRecipe){
             recipe = filterRecipe[indexPath.row]
-        } else {
+        }
+        else{
             recipe = allRecipes[indexPath.row]
         }
         
@@ -99,18 +98,21 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         cell.calories.text = "Calories: \(recipe.caloriesLow) - \(recipe.caloriesHigh)"
         return cell
     }
-    func searchBarIsEmpty() -> Bool{
-        return searchBar.searchBar.text?.isEmpty ?? true
-    }
-    func filterSearchBarText(_ searchText: String, scope: String = "All"){
-        filterRecipe = allRecipes.filter({( recipes : Recipe) -> Bool in
-            return recipes.title.lowercased().contains(searchText.lowercased())
-        })
-        recipeTableView.reloadData()
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
+        if searchBar.text == nil || searchBar.text == "" {
+            
+            isSearchingRecipe = false
 
-    }
-    func isSearchBarFiltering() -> Bool {
-        return searchBar.isActive && !searchBarIsEmpty()
+            recipeTableView.reloadData()
+            
+        } else {
+            
+            isSearchingRecipe = true
+            
+            filterRecipe = allRecipes.filter{ $0.title.range(of: searchText, options: [.caseInsensitive]) != nil  }
+            
+            recipeTableView.reloadData()
+        }
     }
     /*
     // MARK: - Navigation
@@ -122,9 +124,4 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     }
     */
 
-}
-extension RecipeViewController: UISearchResultsUpdating{
-    func updateSearchResults(for searchController: UISearchController) {
-        filterSearchBarText(searchController.searchBar.text!)
-    }
 }

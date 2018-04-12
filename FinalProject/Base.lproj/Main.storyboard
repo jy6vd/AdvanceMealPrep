@@ -205,6 +205,7 @@
                     </view>
                     <connections>
                         <outlet property="recipeTableView" destination="2Dc-aH-dpn" id="R5l-FO-EP7"/>
+                        <outlet property="searchBar" destination="SL8-YG-ILw" id="5lo-Ec-tYS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ky8-Vu-CCQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
