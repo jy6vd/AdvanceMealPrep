@@ -139,7 +139,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeCell" rowHeight="118" id="7Fb-wu-aRJ" customClass="RecipeTableViewCell" customModule="FinalProject" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeCell" rowHeight="118" id="7Fb-wu-aRJ" customClass="SavedRecipeTableViewCell" customModule="FinalProject" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="118"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Fb-wu-aRJ" id="y0f-LA-htQ">
@@ -183,8 +183,9 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="calories" destination="t8P-PA-csi" id="cWB-VQ-l2O"/>
-                                            <outlet property="foodImage" destination="QKI-4j-fd2" id="sQi-r5-u3v"/>
-                                            <outlet property="foodTitle" destination="YPF-dM-K0x" id="gVf-Be-yNE"/>
+                                            <outlet property="foodCalories" destination="t8P-PA-csi" id="8W4-FX-yG4"/>
+                                            <outlet property="foodImage" destination="QKI-4j-fd2" id="opH-ve-TuB"/>
+                                            <outlet property="foodTitle" destination="YPF-dM-K0x" id="hd4-vs-WX5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
