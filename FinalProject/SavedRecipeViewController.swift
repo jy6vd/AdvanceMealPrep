@@ -1,44 +1,32 @@
 //
-//  WeeksViewController.swift
+//  SavedRecipeViewController.swift
 //  FinalProject
 //
-//  Created by Jonathan Yee on 4/5/18.
+//  Created by Jonathan Yee on 4/17/18.
 //  Copyright © 2018 Jonathan Yee. All rights reserved.
 //
 
 import UIKit
 
-class WeeksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    var days: [String] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-    @IBOutlet weak var tableview: UITableView!
-    func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return days.count
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 95
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "dayCell", for: indexPath) as! WeekTableViewCell
-        cell.days.text = days[indexPath.row];
-        
-        
-        return cell
+        <#code#>
     }
     
 
+    @IBAction func addRecipe(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "addRecipeSegue", sender: self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        tableview.dataSource = self
-        tableview.delegate = self
+        
     }
 
     override func didReceiveMemoryWarning() {
