@@ -15,7 +15,7 @@ public class Recipes: NSManagedObject {
     var ingredients: [Ingredients]?{
         return self.rawIngredients?.array as? [Ingredients]
     }
-    convenience init?(name: String?, descriptions: String?, serving: Double, calorieHi: Double, calorieLow: Double){
+    convenience init?(name: String?, descriptions: String?, serving: Double, calorieHi: Double, calorieLow: Double,meal: String?){
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         guard let context = appDelegate?.persistentContainer.viewContext else{
             return nil
@@ -26,5 +26,6 @@ public class Recipes: NSManagedObject {
         self.serving = serving
         self.caloriesHi = calorieHi
         self.caloriesLow = calorieLow
+        self.meal = meal
     }
 }
