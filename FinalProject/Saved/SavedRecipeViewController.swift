@@ -10,26 +10,51 @@ import UIKit
 
 class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var meal_type: [String] = ["Breakfast", "Lunch", "Dinner", "Snack"]
-    var meal_array: [String] = ["Donut", "Cookie", "Pizza", "Burger"]
+    var breakfast_array: [String] = ["Donut", "Ceral", "Yogurt", "hashbrown"]
+    var lunch_array: [String] = ["Salad", "Pasta", "Pizza", "Burger"]
+    var dinner_array: [String] = ["Chicken", "Steak", "Lamb", "Burger"]
+    var snack_array: [String] = ["Cake", "Cookie", "Pretzel", "Candy"]
     @IBOutlet weak var tableView: UITableView!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return meal_array.count
+        switch section{
+        case 0:
+           return breakfast_array.count
+        case 1:
+           return lunch_array.count
+        case 2:
+            return dinner_array.count
+        default:
+            return snack_array.count
+        }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return meal_type.count
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 160
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return
+//    }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return meal_type[section]
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! SavedRecipeTableViewCell
-        cell.foodCalories.text = meal_array[indexPath.row]
-        cell.foodTitle.text = meal_array[indexPath.row]
+        switch indexPath.section{
+            case 0:
+                cell.foodCalories.text = breakfast_array[indexPath.row]
+                cell.foodTitle.text = breakfast_array[indexPath.row]
+            case 1:
+                cell.foodCalories.text = lunch_array[indexPath.row]
+                cell.foodTitle.text = lunch_array[indexPath.row]
+            case 2:
+                cell.foodCalories.text = dinner_array[indexPath.row]
+                cell.foodTitle.text = dinner_array[indexPath.row]
+            default:
+                cell.foodCalories.text = snack_array[indexPath.row]
+                cell.foodTitle.text = snack_array[indexPath.row]
+        }
+       
         //cell.foodImage.image = UIImage(named: "donut")
         return cell
     }
@@ -67,8 +92,22 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     }*/
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            meal_array.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            switch indexPath.section{
+                case 0:
+                    breakfast_array.remove(at: indexPath.row)
+                    break
+                case 1:
+                    lunch_array.remove(at: indexPath.row)
+                    break
+                case 2:
+                    dinner_array.remove(at: indexPath.row)
+                    break
+                default:
+                    snack_array.remove(at: indexPath.row)
+                    break
+            }
+            //tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
+            tableView.reloadData()
         }
     }
     

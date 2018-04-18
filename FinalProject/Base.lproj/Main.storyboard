@@ -126,7 +126,7 @@
             </objects>
             <point key="canvasLocation" x="1839" y="-313"/>
         </scene>
-        <!--Added Recipe-->
+        <!--Saved-->
         <scene sceneID="Y8U-aX-wbu">
             <objects>
                 <viewController id="ryH-D1-ik6" customClass="SavedRecipeViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -149,6 +149,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="120" height="117.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="120" id="0en-xc-GDq"/>
+                                                        <constraint firstAttribute="height" constant="117.5" id="7SR-0T-ozQ"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPF-dM-K0x">
@@ -156,7 +157,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="Nm9-6q-c1A"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -203,7 +204,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Rwg-P0-sOz"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Added Recipe" id="5oJ-rK-6PQ">
+                    <navigationItem key="navigationItem" title="Saved" id="5oJ-rK-6PQ">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Mb8-VM-KW8"/>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="Xz1-nS-nxJ">
                             <connections>
@@ -246,6 +247,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8kQ-gY-ZBe">
                                                     <rect key="frame" x="0.0" y="0.0" width="120" height="117.5"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" constant="117.5" id="5An-jN-hDv"/>
                                                         <constraint firstAttribute="width" constant="120" id="xwE-kr-8MV"/>
                                                     </constraints>
                                                 </imageView>
@@ -254,7 +256,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="xHy-SZ-2uw"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -597,6 +599,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tOL-tR-ZnB"/>
+        <segue reference="jPe-c4-5lq"/>
     </inferredMetricsTieBreakers>
 </document>

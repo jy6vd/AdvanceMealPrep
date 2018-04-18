@@ -104,6 +104,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		237C81872086D5C000C3580F /* Week */ = {
+			isa = PBXGroup;
+			children = (
+				23FAB09D2073FCE90087F87F /* WeekTableViewCell.swift */,
+				23EAC26F2076923100DA123E /* WeeksViewController.swift */,
+			);
+			path = Week;
+			sourceTree = "<group>";
+		};
+		237C81882086D5DE00C3580F /* Meals */ = {
+			isa = PBXGroup;
+			children = (
+				23303C2D207D26AB0039C71B /* MealsViewController.swift */,
+				23303C2F207D26F00039C71B /* MealsTableViewCell.swift */,
+			);
+			path = Meals;
+			sourceTree = "<group>";
+		};
+		237C818A2086D5F700C3580F /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				23C66368207DC1E600F74183 /* RecipeTableViewCell.swift */,
+				23C6636A207DC1FA00F74183 /* RecipeViewController.swift */,
+			);
+			path = Recipe;
+			sourceTree = "<group>";
+		};
+		237C818B2086D60100C3580F /* Ingredient */ = {
+			isa = PBXGroup;
+			children = (
+				D77CF586207FDD0100E107A8 /* IngredientsViewController.swift */,
+				D77CF589207FDD3B00E107A8 /* IngredientsTableViewCell.swift */,
+			);
+			path = Ingredient;
+			sourceTree = "<group>";
+		};
+		237C818C2086D61000C3580F /* Saved */ = {
+			isa = PBXGroup;
+			children = (
+				237C816D20866F5B00C3580F /* SavedRecipeViewController.swift */,
+				237C817120867C8800C3580F /* SavedRecipeTableViewCell.swift */,
+			);
+			path = Saved;
+			sourceTree = "<group>";
+		};
 		23E4721B20584099004E4DB8 = {
 			isa = PBXGroup;
 			children = (
@@ -137,16 +182,11 @@
 				23E4722E20584099004E4DB8 /* Assets.xcassets */,
 				23E4723020584099004E4DB8 /* LaunchScreen.storyboard */,
 				23E4723320584099004E4DB8 /* Info.plist */,
-				23FAB09D2073FCE90087F87F /* WeekTableViewCell.swift */,
-				23EAC26F2076923100DA123E /* WeeksViewController.swift */,
-				23303C2D207D26AB0039C71B /* MealsViewController.swift */,
-				23303C2F207D26F00039C71B /* MealsTableViewCell.swift */,
-				23C66368207DC1E600F74183 /* RecipeTableViewCell.swift */,
-				23C6636A207DC1FA00F74183 /* RecipeViewController.swift */,
-				D77CF586207FDD0100E107A8 /* IngredientsViewController.swift */,
-				D77CF589207FDD3B00E107A8 /* IngredientsTableViewCell.swift */,
-				237C817120867C8800C3580F /* SavedRecipeTableViewCell.swift */,
-				237C816D20866F5B00C3580F /* SavedRecipeViewController.swift */,
+				237C81872086D5C000C3580F /* Week */,
+				237C81882086D5DE00C3580F /* Meals */,
+				237C818A2086D5F700C3580F /* Recipe */,
+				237C818B2086D60100C3580F /* Ingredient */,
+				237C818C2086D61000C3580F /* Saved */,
 				237C815A208652FB00C3580F /* FinalProject.xcdatamodeld */,
 			);
 			path = FinalProject;
