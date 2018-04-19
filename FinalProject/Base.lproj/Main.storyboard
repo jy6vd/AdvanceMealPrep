@@ -666,6 +666,9 @@
                                     <segment title="Ingredients"/>
                                     <segment title="Directions"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentControlChanged:" destination="VHS-gD-LNn" eventType="valueChanged" id="Z6Q-z0-aA2"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ewV-ju-1F6">
                                 <rect key="frame" x="0.0" y="352" width="375" height="266"/>
@@ -745,7 +748,7 @@
                     <connections>
                         <outlet property="foodImage" destination="N9s-CC-lsm" id="WPs-EV-Lpy"/>
                         <outlet property="ingredientTableView" destination="ewV-ju-1F6" id="YBS-5o-z33"/>
-                        <outlet property="removeButton" destination="iz9-VW-Q31" id="GPF-xf-zim"/>
+                        <outlet property="removeButton" destination="iz9-VW-Q31" id="wL7-SQ-t9I"/>
                         <outlet property="servingSizeLabel" destination="a0W-Sv-hY5" id="79O-Zd-CRx"/>
                         <outlet property="tabBar" destination="kKJ-7d-4sF" id="DdA-Uv-crj"/>
                     </connections>

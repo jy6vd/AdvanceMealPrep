@@ -13,8 +13,24 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
     //var volume_units: [String] = ["tsp", "tbs", "fl oz", "cup", "pint", "quart", "gallon", "ml", "l"]
     var ingredients: [String] = ["Onion", "Apple Juice", "Salt", "Pepper", "Olive oil"]
     var servingsize: [String] = ["1 fl oz","2 tbs","3 cups","4 tsp","5 pint"];
+    var directions: [String] = [
+        "Heat up pan",
+        "Pour olive oil in",
+        "Chopped onion",
+        "Add salt and pepper",
+        "Cook for 15 mins"
+    ]
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ingredients.count
+        var count = 0
+        switch(tabBar.selectedSegmentIndex){
+        case 0:
+            count = ingredients.count
+        case 1:
+            count = directions.count
+        default:
+            break
+        }
+        return count
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -22,9 +38,16 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientCell", for: indexPath) as! SavedRecipeInfoTableViewCell
-        cell.ingredientName.text = ingredients[indexPath.row]
-        cell.servingSize.text = servingsize[indexPath.row]
-        
+        switch(tabBar.selectedSegmentIndex){
+        case 0:
+            cell.ingredientName.text = ingredients[indexPath.row]
+            cell.servingSize.text = servingsize[indexPath.row]
+        case 1:
+            cell.ingredientName.text = directions[indexPath.row]
+            cell.servingSize.text = " "
+        default:
+            break
+        }
         return cell
     }
     
@@ -32,9 +55,13 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
     @IBOutlet weak var tabBar: UISegmentedControl!
     @IBOutlet weak var servingSizeLabel: UILabel!
     @IBOutlet weak var ingredientTableView: UITableView!
+    
     @IBOutlet weak var removeButton: UIBarButtonItem!
     
- 
+    @IBAction func segmentControlChanged(_ sender: Any) {
+        ingredientTableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ingredientTableView.dataSource = self
