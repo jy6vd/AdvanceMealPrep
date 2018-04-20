@@ -41,9 +41,11 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
         switch(tabBar.selectedSegmentIndex){
         case 0:
             cell.ingredientName.text = ingredients[indexPath.row]
+            foodTitle.title = ingredients[indexPath.row]
             cell.servingSize.text = servingsize[indexPath.row]
         case 1:
             cell.ingredientName.text = directions[indexPath.row]
+            foodTitle.title = ingredients[indexPath.row]
             cell.servingSize.text = " "
         default:
             break
@@ -54,6 +56,7 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
     @IBOutlet weak var foodImage: UIImageView!
     @IBOutlet weak var tabBar: UISegmentedControl!
     @IBOutlet weak var servingSizeLabel: UILabel!
+    @IBOutlet weak var foodTitle: UINavigationItem!
     @IBOutlet weak var ingredientTableView: UITableView!
     
     @IBOutlet weak var removeButton: UIBarButtonItem!

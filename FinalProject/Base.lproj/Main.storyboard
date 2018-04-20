@@ -747,6 +747,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="foodImage" destination="N9s-CC-lsm" id="WPs-EV-Lpy"/>
+                        <outlet property="foodTitle" destination="wAf-8G-je9" id="4ZO-sW-D8x"/>
                         <outlet property="ingredientTableView" destination="ewV-ju-1F6" id="YBS-5o-z33"/>
                         <outlet property="removeButton" destination="iz9-VW-Q31" id="wL7-SQ-t9I"/>
                         <outlet property="servingSizeLabel" destination="a0W-Sv-hY5" id="79O-Zd-CRx"/>
