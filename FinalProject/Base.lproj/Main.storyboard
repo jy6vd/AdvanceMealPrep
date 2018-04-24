@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -531,29 +532,27 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gdv-d1-8Ds" userLabel="Food Image">
                                 <rect key="frame" x="0.0" y="64" width="375" height="209"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="209" id="qhS-pb-ZnA"/>
+                                </constraints>
                             </imageView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lR8-C1-EJY" userLabel="Tab Bar">
                                 <rect key="frame" x="105" y="281" width="165" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="z2z-EY-5C1"/>
+                                </constraints>
                                 <segments>
                                     <segment title="Ingredients"/>
                                     <segment title="Directions"/>
                                 </segments>
                                 <connections>
+                                    <action selector="segmentControlChanged:" destination="TdQ-VI-dwJ" eventType="valueChanged" id="Tk9-Cg-Jym"/>
                                     <action selector="tabBar:" destination="Hc9-we-HpJ" eventType="valueChanged" id="aiH-8N-Yn4"/>
                                 </connections>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serving Size: #" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UOv-t5-tck" userLabel="ServingSize">
-                                <rect key="frame" x="134" y="323" width="114" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="k8D-HC-SLG" userLabel="Ingredient Table View">
                                 <rect key="frame" x="0.0" y="352" width="375" height="266"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="266" id="JPy-Hv-8be"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IngredientDisplayTableViewCell" id="zMF-ZB-Tv2" customClass="IngredientDisplayTableViewCell" customModule="FinalProject" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -562,21 +561,28 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHA-4Z-S7E" userLabel="Serving Size">
-                                                    <rect key="frame" x="206" y="12" width="122" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHA-4Z-S7E" userLabel="Serving Size">
+                                                    <rect key="frame" x="266" y="12" width="79" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6O-nl-Ec0" userLabel="Ingredient Name">
-                                                    <rect key="frame" x="35" y="12" width="146" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6O-nl-Ec0" userLabel="Ingredient Name">
+                                                    <rect key="frame" x="30" y="12" width="189" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="189" id="DdA-dt-C9j"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="MHA-4Z-S7E" secondAttribute="trailing" constant="15" id="JJA-cU-FJS"/>
+                                                <constraint firstItem="MHA-4Z-S7E" firstAttribute="leading" secondItem="Q6O-nl-Ec0" secondAttribute="trailing" constant="47" id="O66-Bv-cwe"/>
+                                                <constraint firstItem="Q6O-nl-Ec0" firstAttribute="top" secondItem="OtQ-Wz-yZo" secondAttribute="topMargin" constant="1" id="kZT-ui-j5E"/>
+                                                <constraint firstItem="Q6O-nl-Ec0" firstAttribute="leading" secondItem="OtQ-Wz-yZo" secondAttribute="leadingMargin" constant="15" id="tit-ko-aup"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="ingredientName" destination="Q6O-nl-Ec0" id="RDp-2j-NXo"/>
@@ -585,25 +591,27 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serving Size: #" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYG-fD-4pR" userLabel="Serving Size #">
+                                <rect key="frame" x="105" y="323" width="165" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gdv-d1-8Ds" firstAttribute="top" secondItem="i78-38-s23" secondAttribute="top" id="1Wp-5G-gP4"/>
-                            <constraint firstItem="UOv-t5-tck" firstAttribute="centerY" secondItem="Epu-ad-YtD" secondAttribute="centerY" id="3K7-3r-VCd"/>
+                            <constraint firstItem="rYG-fD-4pR" firstAttribute="top" secondItem="lR8-C1-EJY" secondAttribute="bottom" constant="14" id="56e-sW-fZg"/>
                             <constraint firstItem="gdv-d1-8Ds" firstAttribute="leading" secondItem="i78-38-s23" secondAttribute="leading" id="5gQ-Gj-2v1"/>
                             <constraint firstItem="gdv-d1-8Ds" firstAttribute="trailing" secondItem="i78-38-s23" secondAttribute="trailing" id="CV7-he-5P0"/>
-                            <constraint firstItem="UOv-t5-tck" firstAttribute="leading" secondItem="i78-38-s23" secondAttribute="leading" constant="134" id="GNk-V0-fO9"/>
-                            <constraint firstItem="gdv-d1-8Ds" firstAttribute="top" secondItem="i78-38-s23" secondAttribute="top" id="LaI-n8-tR7"/>
+                            <constraint firstItem="k8D-HC-SLG" firstAttribute="top" secondItem="rYG-fD-4pR" secondAttribute="bottom" constant="8" id="G5J-Gj-RnZ"/>
                             <constraint firstItem="lR8-C1-EJY" firstAttribute="leading" secondItem="i78-38-s23" secondAttribute="leading" constant="105" id="Ngi-N6-1h5"/>
-                            <constraint firstItem="k8D-HC-SLG" firstAttribute="top" secondItem="UOv-t5-tck" secondAttribute="bottom" constant="8" id="PzN-yF-pYi"/>
-                            <constraint firstItem="UOv-t5-tck" firstAttribute="top" secondItem="lR8-C1-EJY" secondAttribute="bottom" constant="14" id="RRf-UD-eYj"/>
                             <constraint firstItem="i78-38-s23" firstAttribute="trailing" secondItem="lR8-C1-EJY" secondAttribute="trailing" constant="105" id="V5i-wH-BkA"/>
-                            <constraint firstItem="gdv-d1-8Ds" firstAttribute="leading" secondItem="i78-38-s23" secondAttribute="leading" id="bg3-H0-bJW"/>
+                            <constraint firstItem="i78-38-s23" firstAttribute="trailing" secondItem="rYG-fD-4pR" secondAttribute="trailing" constant="105" id="XFE-FF-iIA"/>
                             <constraint firstItem="k8D-HC-SLG" firstAttribute="leading" secondItem="i78-38-s23" secondAttribute="leading" id="c7V-mR-trW"/>
                             <constraint firstItem="k8D-HC-SLG" firstAttribute="bottom" secondItem="i78-38-s23" secondAttribute="bottom" id="fMH-uk-cfL"/>
                             <constraint firstItem="lR8-C1-EJY" firstAttribute="top" secondItem="gdv-d1-8Ds" secondAttribute="bottom" constant="8" id="g2K-Pq-yGu"/>
-                            <constraint firstItem="i78-38-s23" firstAttribute="trailing" secondItem="UOv-t5-tck" secondAttribute="trailing" constant="127" id="h4x-34-i5c"/>
-                            <constraint firstItem="gdv-d1-8Ds" firstAttribute="trailing" secondItem="i78-38-s23" secondAttribute="trailing" id="jr2-51-69s"/>
+                            <constraint firstItem="rYG-fD-4pR" firstAttribute="leading" secondItem="i78-38-s23" secondAttribute="leading" constant="105" id="mWP-el-bXR"/>
                             <constraint firstItem="i78-38-s23" firstAttribute="trailing" secondItem="k8D-HC-SLG" secondAttribute="trailing" id="vxZ-ga-V2I"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="i78-38-s23"/>
@@ -617,8 +625,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="foodImage" destination="gdv-d1-8Ds" id="CcO-Xp-fdf"/>
+                        <outlet property="foodTitle" destination="cWU-LJ-Ein" id="YqY-mh-9xs"/>
                         <outlet property="ingredientTableView" destination="k8D-HC-SLG" id="21D-V4-rMv"/>
-                        <outlet property="servingSizeLabel" destination="UOv-t5-tck" id="iDo-6F-gdB"/>
+                        <outlet property="servingSizeLabel" destination="rYG-fD-4pR" id="E6r-RQ-V2T"/>
                         <outlet property="tabBar" destination="lR8-C1-EJY" id="gRJ-g9-8WI"/>
                     </connections>
                 </viewController>
