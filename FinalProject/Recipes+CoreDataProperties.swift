@@ -17,10 +17,7 @@ extension Recipes {
         return NSFetchRequest<Recipes>(entityName: "Recipes")
     }
 
-    @NSManaged public var caloriesHi: Double
-    @NSManaged public var caloriesLow: Double
     @NSManaged public var descriptions: String?
-    @NSManaged public var meal: String?
     @NSManaged public var name: String?
     @NSManaged public var serving: Double
     @NSManaged public var rawIngredients: NSOrderedSet?

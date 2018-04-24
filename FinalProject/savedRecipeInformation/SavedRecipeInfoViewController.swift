@@ -59,7 +59,8 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
     @IBOutlet weak var foodTitle: UINavigationItem!
     @IBOutlet weak var ingredientTableView: UITableView!
     
-    @IBOutlet weak var removeButton: UIBarButtonItem!
+    @IBAction func removeRecipe(_ sender: Any) {
+    }
     
     @IBAction func segmentControlChanged(_ sender: Any) {
         ingredientTableView.reloadData()
