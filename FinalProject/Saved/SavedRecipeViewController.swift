@@ -42,16 +42,16 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! SavedRecipeTableViewCell
         switch indexPath.section{
             case 0:
-                cell.foodCalories.text = breakfast_array[indexPath.row]
+                cell.foodDescription.text = breakfast_array[indexPath.row]
                 cell.foodTitle.text = breakfast_array[indexPath.row]
             case 1:
-                cell.foodCalories.text = lunch_array[indexPath.row]
+                cell.foodDescription.text = lunch_array[indexPath.row]
                 cell.foodTitle.text = lunch_array[indexPath.row]
             case 2:
-                cell.foodCalories.text = dinner_array[indexPath.row]
+                cell.foodDescription.text = dinner_array[indexPath.row]
                 cell.foodTitle.text = dinner_array[indexPath.row]
             default:
-                cell.foodCalories.text = snack_array[indexPath.row]
+                cell.foodDescription.text = snack_array[indexPath.row]
                 cell.foodTitle.text = snack_array[indexPath.row]
         }
        

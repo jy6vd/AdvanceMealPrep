@@ -181,7 +181,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="foodCalories" destination="t8P-PA-csi" id="8W4-FX-yG4"/>
+                                            <outlet property="foodDescription" destination="t8P-PA-csi" id="mRE-Vl-tqy"/>
                                             <outlet property="foodImage" destination="QKI-4j-fd2" id="opH-ve-TuB"/>
                                             <outlet property="foodTitle" destination="YPF-dM-K0x" id="hd4-vs-WX5"/>
                                             <segue destination="VHS-gD-LNn" kind="show" id="Pr7-hD-8f7"/>
@@ -280,7 +280,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="calories" destination="dkc-VQ-ygT" id="X6K-hl-iPu"/>
+                                            <outlet property="foodDescription" destination="dkc-VQ-ygT" id="wFL-cN-gji"/>
                                             <outlet property="foodImage" destination="8kQ-gY-ZBe" id="deU-0v-a70"/>
                                             <outlet property="foodTitle" destination="Pj1-L4-cvt" id="syH-ui-WTv"/>
                                             <segue destination="TdQ-VI-dwJ" kind="show" id="tOL-tR-ZnB"/>
@@ -611,7 +611,7 @@
                     <navigationItem key="navigationItem" title="Title" id="cWU-LJ-Ein">
                         <barButtonItem key="rightBarButtonItem" title="Favorite" id="uAA-NC-0hk" userLabel="Favorite">
                             <connections>
-                                <action selector="favoriteButton:" destination="Hc9-we-HpJ" id="WQG-2B-SQm"/>
+                                <action selector="saveRecipe:" destination="TdQ-VI-dwJ" id="Pcd-Rm-AQ3"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -743,13 +743,16 @@
                         <viewLayoutGuide key="safeArea" id="hYz-zW-aN9"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="wAf-8G-je9">
-                        <barButtonItem key="rightBarButtonItem" title="Remove" id="iz9-VW-Q31"/>
+                        <barButtonItem key="rightBarButtonItem" title="Remove" id="iz9-VW-Q31">
+                            <connections>
+                                <action selector="removeRecipe:" destination="VHS-gD-LNn" id="WBq-Du-G4U"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="foodImage" destination="N9s-CC-lsm" id="WPs-EV-Lpy"/>
                         <outlet property="foodTitle" destination="wAf-8G-je9" id="4ZO-sW-D8x"/>
                         <outlet property="ingredientTableView" destination="ewV-ju-1F6" id="YBS-5o-z33"/>
-                        <outlet property="removeButton" destination="iz9-VW-Q31" id="wL7-SQ-t9I"/>
                         <outlet property="servingSizeLabel" destination="a0W-Sv-hY5" id="79O-Zd-CRx"/>
                         <outlet property="tabBar" destination="kKJ-7d-4sF" id="DdA-Uv-crj"/>
                     </connections>

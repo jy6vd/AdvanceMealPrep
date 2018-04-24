@@ -30,6 +30,9 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var tabBar: UISegmentedControl!
     @IBOutlet weak var servingSizeLabel: UILabel!
     @IBOutlet weak var ingredientTableView: UITableView!
+    @IBAction func saveRecipe(_ sender: Any) {
+   
+    }
     
     
     

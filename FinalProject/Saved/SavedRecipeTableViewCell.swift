@@ -15,7 +15,7 @@ import UIKit
 class SavedRecipeTableViewCell: UITableViewCell {
     @IBOutlet weak var foodImage: UIImageView!
     @IBOutlet weak var foodTitle: UILabel!
-    @IBOutlet weak var foodCalories: UILabel!
+    @IBOutlet weak var foodDescription: UILabel!
     //@IBOutlet weak var deleteButton: UIButton!
     //weak var delegate: SavedRecipeDelegate?
     

@@ -10,41 +10,34 @@ import UIKit
 
 class RecipeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
 
-    struct Ingredient {
-        var title: String
-        var quantitiy: Double
-        var units: String
-    }
+let allRecipes: [mealType] = Response<mealType>.retrieve(fromResource: "MealsJSON")
     
-    struct Recipe {
-        var title: String
-        var description: String
-        var caloriesLow: Int
-        var caloriesHigh: Int
-        var ingredients: [Ingredient]
-        var servingSize: Int
-        var picture: UIImage
-    }
+//    var breakfastCount = 0
+//    var lunchCount = 0
+//    var dinnerCount = 0
+//    var snackCount = 0
     
-    var allRecipes: [Recipe] = []
-    var userRecipes: [Recipe] = []
+//    func countRecipeMealType(){
+//        for recipestype in allRecipes{
+//            if (recipestype.mealType == "breakfast"){
+//                breakfastCount = breakfastCount + 1
+//            }
+//            if (recipestype.mealType == "lunch"){
+//                lunchCount = lunchCount + 1
+//            }
+//            if(recipestype.mealType == "dinner"){
+//                dinnerCount = dinnerCount + 1
+//            }
+//            else{
+//                snackCount = snackCount + 1
+//            }
+//        }
+//
+//    }
+//    var userRecipes: [Recipe] = []
     
-    func loadRecipes(){
-        allRecipes.append(Recipe(title: "Donut", description: "Sweet dessert", caloriesLow: 29, caloriesHigh: 395,
-            ingredients: ([Ingredient(title: "Wheat", quantitiy: 10, units: "oz")]),
-            servingSize: 1, picture: UIImage(named: "donut")!))
-        allRecipes.append(Recipe(title: "Peas", description: "Sweet dessert", caloriesLow: 29, caloriesHigh: 395,
-            ingredients: ([Ingredient(title: "Wheat", quantitiy: 10, units: "oz")]),
-            servingSize: 1, picture: UIImage(named: "donut")!))
-
-    }
+    var filterRecipe = [mealType]()
     
-    func addRecipe(recipe: Recipe){
-        userRecipes.append(recipe)
-        
-    }
-    
-    var filterRecipe = [Recipe]()
     var isSearchingRecipe = false
     @IBOutlet weak var recipeTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -54,9 +47,9 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         recipeTableView.dataSource = self
         recipeTableView.delegate = self
         searchBar.delegate = self
+//        countRecipeMealType()
         
         searchBar.returnKeyType = UIReturnKeyType.done
-        loadRecipes()
 
         // Do any additional setup after loading the view.
     }
@@ -67,13 +60,15 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return allRecipes.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(isSearchingRecipe){
             return filterRecipe.count
         }
-        return allRecipes.count
+        //return regions[section].companies.count
+        return allRecipes[section].recipes.count
+        
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160
@@ -81,21 +76,21 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! RecipeTableViewCell
-        let recipe: Recipe
         
         if(isSearchingRecipe){
-            recipe = filterRecipe[indexPath.row]
+            cell.foodTitle.text = filterRecipe[indexPath.section].recipes[indexPath.row].title
+            cell.foodDescription.text = filterRecipe[indexPath.section].recipes[indexPath.row].description
         }
         else{
-            recipe = allRecipes[indexPath.row]
+            cell.foodTitle.text = allRecipes[indexPath.section].recipes[indexPath.row].title
+            cell.foodDescription.text = allRecipes[indexPath.section].recipes[indexPath.row].description
         }
         
 //        cell.foodTitle.text = "Donut"
 //        cell.foodImage.image = UIImage(named: "donut")
 //        cell.calories.text = "Calories: 29 - 395"
-        cell.foodTitle.text = recipe.title
-        cell.foodImage.image = recipe.picture
-        cell.calories.text = "Calories: \(recipe.caloriesLow) - \(recipe.caloriesHigh)"
+       // cell.foodTitle.text = recipe.title
+//        cell.foodImage.image = recipe.picture
         return cell
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
@@ -108,8 +103,13 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         } else {
             
             isSearchingRecipe = true
+            var filteredRecipes: [Recipe] = []
+           // filterRecipe = allRecipes.filter{ $0.title.range == searchText/*(of: searchText, options: [.caseInsensitive]) != nil */ }
             
-            filterRecipe = allRecipes.filter{ $0.title.range(of: searchText, options: [.caseInsensitive]) != nil  }
+            for recipe in allRecipes {
+                filteredRecipes.append(contentsOf: recipe.recipes.filter{ $0.title == searchText })
+                
+            }
             
             recipeTableView.reloadData()
         }
