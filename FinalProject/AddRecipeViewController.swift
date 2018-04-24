@@ -36,7 +36,7 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientDisplayTableViewCell", for: indexPath) as! IngredientDisplayTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SavedRecipeInfoTableViewCell", for: indexPath) as! IngredientDisplayTableViewCell
         switch(tabBar.selectedSegmentIndex){
         case 0:
             cell.ingredientName.text = ingredients[indexPath.row]
