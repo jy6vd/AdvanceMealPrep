@@ -10,33 +10,9 @@ import UIKit
 
 class RecipeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
 
-let allRecipes: [mealType] = Response<mealType>.retrieve(fromResource: "MealsJSON")
+let allRecipes: [mealType] = Response<mealType>.retrieve(fromResource: "meals")
     
-//    var breakfastCount = 0
-//    var lunchCount = 0
-//    var dinnerCount = 0
-//    var snackCount = 0
-    
-//    func countRecipeMealType(){
-//        for recipestype in allRecipes{
-//            if (recipestype.mealType == "breakfast"){
-//                breakfastCount = breakfastCount + 1
-//            }
-//            if (recipestype.mealType == "lunch"){
-//                lunchCount = lunchCount + 1
-//            }
-//            if(recipestype.mealType == "dinner"){
-//                dinnerCount = dinnerCount + 1
-//            }
-//            else{
-//                snackCount = snackCount + 1
-//            }
-//        }
-//
-//    }
-//    var userRecipes: [Recipe] = []
-    
-    var filterRecipe = [mealType]()
+    var filterRecipe: [mealType] = []
     
     var isSearchingRecipe = false
     @IBOutlet weak var recipeTableView: UITableView!
@@ -47,7 +23,6 @@ let allRecipes: [mealType] = Response<mealType>.retrieve(fromResource: "MealsJSO
         recipeTableView.dataSource = self
         recipeTableView.delegate = self
         searchBar.delegate = self
-//        countRecipeMealType()
         
         searchBar.returnKeyType = UIReturnKeyType.done
 
@@ -85,12 +60,7 @@ let allRecipes: [mealType] = Response<mealType>.retrieve(fromResource: "MealsJSO
             cell.foodTitle.text = allRecipes[indexPath.section].recipes[indexPath.row].title
             cell.foodDescription.text = allRecipes[indexPath.section].recipes[indexPath.row].description
         }
-        
-//        cell.foodTitle.text = "Donut"
-//        cell.foodImage.image = UIImage(named: "donut")
-//        cell.calories.text = "Calories: 29 - 395"
-       // cell.foodTitle.text = recipe.title
-//        cell.foodImage.image = recipe.picture
+    
         return cell
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
@@ -105,12 +75,10 @@ let allRecipes: [mealType] = Response<mealType>.retrieve(fromResource: "MealsJSO
             isSearchingRecipe = true
             var filteredRecipes: [Recipe] = []
            // filterRecipe = allRecipes.filter{ $0.title.range == searchText/*(of: searchText, options: [.caseInsensitive]) != nil */ }
-            
             for recipe in allRecipes {
                 filteredRecipes.append(contentsOf: recipe.recipes.filter{ $0.title == searchText })
-                
             }
-            
+            filterRecipe[0].recipes = filteredRecipes
             recipeTableView.reloadData()
         }
     }

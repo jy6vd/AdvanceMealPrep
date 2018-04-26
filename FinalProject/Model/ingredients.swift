@@ -10,7 +10,18 @@ import Foundation
 
 struct Ingredient: Codable {
     var title: String
-    var quantitiy: Double
+    var quantity: Double
     var units: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case title = "title"
+        case quantity = "quantity"
+        case units = "units"
+    }
+    init(ingredient: Ingredient?, title: String, quantity: Double, units: String) {
+        self.title = title
+        self.quantity = quantity
+        self.units = units
+    }
 }
     

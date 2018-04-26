@@ -13,4 +13,21 @@ struct Recipe: Codable{
     var ingredients: [Ingredient]
     var servingSize: Int
     var picture: String
+    
+    
+    private enum CodingKeys: String, CodingKey {
+        case title = "title"
+        case description = "description"
+        case servingSize = "servingSize"
+        case ingredients = "ingredients"
+        case picture = "imageURL"
+    }
+    init(recipe: Recipe?, title: String, description: String, picture: String, servingSize: Int, ingredients: [Ingredient]) {
+        self.title = title
+        self.description = description
+        self.servingSize = servingSize
+        self.picture = picture
+        self.ingredients = ingredients
+        
+    }
 }
