@@ -10,8 +10,9 @@ import Foundation
 struct Recipe: Codable{
     var title: String
     var description: String
+    var servingSize: String
+    var directions: [String]
     var ingredients: [Ingredient]
-    var servingSize: Int
     var picture: String
     
     
@@ -19,15 +20,16 @@ struct Recipe: Codable{
         case title = "title"
         case description = "description"
         case servingSize = "servingSize"
-        case ingredients = "ingredients"
         case picture = "imageURL"
+        case directions = "directions"
+        case ingredients = "ingredients"
     }
-    init(recipe: Recipe?, title: String, description: String, picture: String, servingSize: Int, ingredients: [Ingredient]) {
-        self.title = title
-        self.description = description
-        self.servingSize = servingSize
-        self.picture = picture
-        self.ingredients = ingredients
-        
-    }
+//    init(recipe: Recipe?, title: String, description: String, picture: String, servingSize: Int, ingredients: [Ingredient]) {
+//        self.title = title
+//        self.description = description
+//        self.servingSize = servingSize
+//        self.picture = picture
+//        self.ingredients = ingredients
+//        
+//    }
 }

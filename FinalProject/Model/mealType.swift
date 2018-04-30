@@ -9,6 +9,5 @@
 import Foundation
 struct mealType: Codable{
     var mealType: String
-    var recipes: [Recipe]
-    
+    var recipes: [Recipe]    
 }

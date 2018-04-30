@@ -10,7 +10,7 @@ import UIKit
 
 class RecipeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
 
-let allRecipes: [mealType] = Response<mealType>.retrieve(fromResource: "meals")
+    let allRecipes: [mealType] = Response<mealType>.retrieve(fromResource: "mealJSON")
     
     var filterRecipe: [mealType] = []
     
@@ -45,9 +45,9 @@ let allRecipes: [mealType] = Response<mealType>.retrieve(fromResource: "meals")
         return allRecipes[section].recipes.count
         
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 160
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 160
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! RecipeTableViewCell
@@ -55,10 +55,20 @@ let allRecipes: [mealType] = Response<mealType>.retrieve(fromResource: "meals")
         if(isSearchingRecipe){
             cell.foodTitle.text = filterRecipe[indexPath.section].recipes[indexPath.row].title
             cell.foodDescription.text = filterRecipe[indexPath.section].recipes[indexPath.row].description
+            if let url = NSURL(string: filterRecipe[indexPath.section].recipes[indexPath.row].picture){
+                if let data = NSData(contentsOf: url as URL){
+                    cell.foodImage.image = UIImage(data: data as Data)
+                }
+            }
         }
         else{
             cell.foodTitle.text = allRecipes[indexPath.section].recipes[indexPath.row].title
             cell.foodDescription.text = allRecipes[indexPath.section].recipes[indexPath.row].description
+            if let url = NSURL(string: allRecipes[indexPath.section].recipes[indexPath.row].picture){
+                if let data = NSData(contentsOf: url as URL){
+                    cell.foodImage.image = UIImage(data: data as Data)
+                }
+            }
         }
     
         return cell

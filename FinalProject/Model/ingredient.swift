@@ -10,7 +10,7 @@ import Foundation
 
 struct Ingredient: Codable {
     var title: String
-    var quantity: Double
+    var quantity: String
     var units: String
     
     private enum CodingKeys: String, CodingKey {
@@ -18,10 +18,10 @@ struct Ingredient: Codable {
         case quantity = "quantity"
         case units = "units"
     }
-    init(ingredient: Ingredient?, title: String, quantity: Double, units: String) {
-        self.title = title
-        self.quantity = quantity
-        self.units = units
-    }
+//    init(ingredient: Ingredient?, title: String, quantity: Double, units: String) {
+//        self.title = title
+//        self.quantity = quantity
+//        self.units = units
+//    }
 }
     
