@@ -18,6 +18,7 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
         "Add salt and pepper",
         "Cook for 15 mins"
     ]
+    var about: String = "It's pretty good"
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count = 0
         switch(tabBar.selectedSegmentIndex){
@@ -25,6 +26,8 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
             count = ingredients.count
         case 1:
             count = directions.count
+        case 2:
+            count = 1
         default:
             break
         }
@@ -46,6 +49,8 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
             cell.ingredientName.text = directions[indexPath.row]
             foodTitle.title = ingredients[indexPath.row]
             cell.servingSize.text = " "
+        case 2:
+            cell.ingredientName.text = about//Should be description (I think) once recipes are loaded
         default:
             break
         }
@@ -62,6 +67,8 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
         ingredientTableView.reloadData()
     }
     
+    @IBAction func FavoriteARecipe(_ sender: UIBarButtonItem) {
+    }
     
     
     

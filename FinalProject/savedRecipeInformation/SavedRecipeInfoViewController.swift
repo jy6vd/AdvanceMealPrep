@@ -20,6 +20,7 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
         "Add salt and pepper",
         "Cook for 15 mins"
     ]
+    var about: String = "It's pretty good"
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count = 0
         switch(tabBar.selectedSegmentIndex){
@@ -27,6 +28,8 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
             count = ingredients.count
         case 1:
             count = directions.count
+        case 2:
+            count = 1
         default:
             break
         }
@@ -47,6 +50,8 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
             cell.ingredientName.text = directions[indexPath.row]
             foodTitle.title = ingredients[indexPath.row]
             cell.servingSize.text = " "
+        case 2:
+            cell.ingredientName.text = about//Should be description (I think) once recipes are loaded
         default:
             break
         }
