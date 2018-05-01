@@ -14,6 +14,8 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     
     var filterRecipe: [mealType] = []
     
+//    let viewRecipeViewController = AddRecipeViewController()
+    
     var isSearchingRecipe = false
     @IBOutlet weak var recipeTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -36,6 +38,9 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return allRecipes.count
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return allRecipes[section].mealType
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(isSearchingRecipe){
@@ -73,6 +78,8 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     
         return cell
     }
+    
+    //needs to be fixed
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         if searchBar.text == nil || searchBar.text == "" {
             
@@ -92,6 +99,17 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
             recipeTableView.reloadData()
         }
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "viewRecipeSegue"{
+            let indexPath = self.recipeTableView.indexPathForSelectedRow!
+            let secondViewController = segue.destination as? AddRecipeViewController
+            let passRecipe = allRecipes[indexPath.section].recipes[indexPath.row]
+            
+            secondViewController?.passedRecipe = passRecipe
+        }
+    }
+}
+    
     /*
     // MARK: - Navigation
 
@@ -102,4 +120,4 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     }
     */
 
-}
+

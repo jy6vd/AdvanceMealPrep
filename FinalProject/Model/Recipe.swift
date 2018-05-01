@@ -15,7 +15,6 @@ struct Recipe: Codable{
     var ingredients: [Ingredient]
     var picture: String
     
-    
     private enum CodingKeys: String, CodingKey {
         case title = "title"
         case description = "description"
