@@ -32,16 +32,23 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
             cell.ingredientName.text = passedRecipe.ingredients[indexPath.row].title
             cell.servingSize.text = "\(passedRecipe.ingredients[indexPath.row].quantity) \(passedRecipe.ingredients[indexPath.row].units)"
             foodTitle.title = passedRecipe.title
-            cell.servingSize.text = passedRecipe.servingSize
         case 1:
             cell.ingredientName.text = passedRecipe.directions[indexPath.row]
             foodTitle.title = passedRecipe.title
+            cell.servingSize.text = " "
         case 2:
             cell.ingredientName.text = passedRecipe.description
             foodTitle.title = passedRecipe.title
+            cell.servingSize.text = " "
         default:
             break
         }
+        if let url = NSURL(string: passedRecipe.picture){
+            if let data = NSData(contentsOf: url as URL){
+                foodImage.image = UIImage(data: data as Data)
+            }
+        }
+        servingSizeLabel.text = "Serving Size: \(passedRecipe.servingSize)"
         return cell
     }
     

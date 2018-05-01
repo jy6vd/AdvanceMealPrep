@@ -12,7 +12,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
 
     let allRecipes: [mealType] = Response<mealType>.retrieve(fromResource: "mealJSON")
     
-    var filterRecipe: [mealType] = []
+    var filteredRecipes: [Recipe] = []
     
 //    let viewRecipeViewController = AddRecipeViewController()
     
@@ -44,7 +44,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(isSearchingRecipe){
-            return filterRecipe.count
+            return filteredRecipes.count
         }
         //return regions[section].companies.count
         return allRecipes[section].recipes.count
@@ -58,9 +58,9 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! RecipeTableViewCell
         
         if(isSearchingRecipe){
-            cell.foodTitle.text = filterRecipe[indexPath.section].recipes[indexPath.row].title
-            cell.foodDescription.text = filterRecipe[indexPath.section].recipes[indexPath.row].description
-            if let url = NSURL(string: filterRecipe[indexPath.section].recipes[indexPath.row].picture){
+            cell.foodTitle.text = filteredRecipes[indexPath.row].title
+            cell.foodDescription.text = filteredRecipes[indexPath.row].description
+            if let url = NSURL(string: filteredRecipes[indexPath.row].picture){
                 if let data = NSData(contentsOf: url as URL){
                     cell.foodImage.image = UIImage(data: data as Data)
                 }
@@ -90,12 +90,15 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         } else {
             
             isSearchingRecipe = true
-            var filteredRecipes: [Recipe] = []
+            //var filteredRecipes: [Recipe] = []
            // filterRecipe = allRecipes.filter{ $0.title.range == searchText/*(of: searchText, options: [.caseInsensitive]) != nil */ }
             for recipe in allRecipes {
                 filteredRecipes.append(contentsOf: recipe.recipes.filter{ $0.title == searchText })
-            }
-            filterRecipe[0].recipes = filteredRecipes
+//                filteredRecipes = recipe.recipes.filter($0.title.range == searchText)
+          }
+            
+
+            //filterRecipe[].recipes = filteredRecipes
             recipeTableView.reloadData()
         }
     }
