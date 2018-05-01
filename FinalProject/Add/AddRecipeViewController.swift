@@ -17,7 +17,7 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
         case 1:
             return passedRecipe.directions.count
         default:
-            return passedRecipe.description.count
+            return 1
         }
     }
     
@@ -26,7 +26,7 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SavedRecipeInfoTableViewCell", for: indexPath) as! IngredientDisplayTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientCell", for: indexPath) as! IngredientDisplayTableViewCell
         switch(tabBar.selectedSegmentIndex){
         case 0:
             cell.ingredientName.text = passedRecipe.ingredients[indexPath.row].title
@@ -36,11 +36,9 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
         case 1:
             cell.ingredientName.text = passedRecipe.directions[indexPath.row]
             foodTitle.title = passedRecipe.title
-            cell.servingSize.text = passedRecipe.servingSize
         case 2:
             cell.ingredientName.text = passedRecipe.description
             foodTitle.title = passedRecipe.title
-            cell.servingSize.text = passedRecipe.servingSize
         default:
             break
         }
@@ -56,8 +54,8 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
     @IBAction func segmentControlChanged(_ sender: UISegmentedControl) {
         ingredientTableView.reloadData()
     }
-    
-    @IBAction func FavoriteARecipe(_ sender: UIBarButtonItem) {
+ 
+    @IBAction func saveRecipes(_ sender: Any) {
     }
     
     
