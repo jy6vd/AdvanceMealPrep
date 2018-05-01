@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -490,92 +491,4 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="size" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqG-8f-oZR">
-                                                    <rect key="frame" x="89.5" y="12" width="270.5" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="aO4-U2-HMC" firstAttribute="leading" secondItem="2gC-SK-TLJ" secondAttribute="leading" constant="15" id="0PA-nq-Yeb"/>
-                                                <constraint firstItem="oqG-8f-oZR" firstAttribute="leading" secondItem="aO4-U2-HMC" secondAttribute="trailing" constant="29.5" id="NJF-sW-G0T"/>
-                                                <constraint firstAttribute="bottom" secondItem="oqG-8f-oZR" secondAttribute="bottom" constant="10.5" id="PJD-dQ-rIz"/>
-                                                <constraint firstItem="oqG-8f-oZR" firstAttribute="top" secondItem="2gC-SK-TLJ" secondAttribute="top" constant="12" id="XE3-tR-GwJ"/>
-                                                <constraint firstAttribute="bottom" secondItem="aO4-U2-HMC" secondAttribute="bottom" constant="10.5" id="enS-JP-YLh"/>
-                                                <constraint firstAttribute="trailing" secondItem="oqG-8f-oZR" secondAttribute="trailing" constant="15" id="riH-dS-Byy"/>
-                                                <constraint firstItem="aO4-U2-HMC" firstAttribute="top" secondItem="2gC-SK-TLJ" secondAttribute="top" constant="12" id="rsx-xI-6eK"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="ingredientName" destination="aO4-U2-HMC" id="flP-jD-OdV"/>
-                                            <outlet property="servingSize" destination="oqG-8f-oZR" id="GKG-qz-w3b"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serving Size: #" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kjt-pw-dql">
-                                <rect key="frame" x="105" y="279" width="165" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4Tm-zD-vIv">
-                                <rect key="frame" x="63" y="237" width="248" height="29"/>
-                                <segments>
-                                    <segment title="Ingredients"/>
-                                    <segment title="Directions"/>
-                                    <segment title="About"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentControlChanged:" destination="gCC-H0-Cuw" eventType="valueChanged" id="EfB-62-cJq"/>
-                                </connections>
-                            </segmentedControl>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Kjt-pw-dql" firstAttribute="top" secondItem="4Tm-zD-vIv" secondAttribute="bottom" constant="14" id="6zt-G3-CwN"/>
-                            <constraint firstItem="1Eg-8Y-bSE" firstAttribute="leading" secondItem="mwp-IC-UWd" secondAttribute="leading" id="7hG-LZ-Yjo"/>
-                            <constraint firstItem="R0W-2h-y5b" firstAttribute="bottom" secondItem="mwp-IC-UWd" secondAttribute="bottom" id="Fh5-7T-dI3"/>
-                            <constraint firstItem="mwp-IC-UWd" firstAttribute="trailing" secondItem="R0W-2h-y5b" secondAttribute="trailing" id="LoR-Jy-jGS"/>
-                            <constraint firstItem="mwp-IC-UWd" firstAttribute="trailing" secondItem="Kjt-pw-dql" secondAttribute="trailing" constant="105" id="Utd-IZ-bUT"/>
-                            <constraint firstItem="1Eg-8Y-bSE" firstAttribute="trailing" secondItem="mwp-IC-UWd" secondAttribute="trailing" id="Yjr-11-sgi"/>
-                            <constraint firstItem="mwp-IC-UWd" firstAttribute="bottom" secondItem="1Eg-8Y-bSE" secondAttribute="bottom" constant="438" id="d0a-lt-d1j"/>
-                            <constraint firstItem="Kjt-pw-dql" firstAttribute="leading" secondItem="mwp-IC-UWd" secondAttribute="leading" constant="105" id="eCT-hk-yUa"/>
-                            <constraint firstItem="4Tm-zD-vIv" firstAttribute="leading" secondItem="mwp-IC-UWd" secondAttribute="leading" constant="63" id="eFf-Aj-PP1"/>
-                            <constraint firstItem="mwp-IC-UWd" firstAttribute="trailing" secondItem="4Tm-zD-vIv" secondAttribute="trailing" constant="64" id="g3D-cK-hCA"/>
-                            <constraint firstItem="R0W-2h-y5b" firstAttribute="leading" secondItem="mwp-IC-UWd" secondAttribute="leading" id="lRf-I9-Xkk"/>
-                            <constraint firstItem="R0W-2h-y5b" firstAttribute="top" secondItem="Kjt-pw-dql" secondAttribute="bottom" constant="8" id="rrJ-1N-t8A"/>
-                            <constraint firstItem="1Eg-8Y-bSE" firstAttribute="top" secondItem="mwp-IC-UWd" secondAttribute="top" id="sj8-ip-cuV"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="mwp-IC-UWd"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Title" id="9Wr-Un-oL3">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="qZl-XF-heI">
-                            <connections>
-                                <action selector="saveRecipes:" destination="gCC-H0-Cuw" id="cqG-ek-V7o"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="foodImage" destination="1Eg-8Y-bSE" id="Q4z-gI-sCt"/>
-                        <outlet property="foodTitle" destination="9Wr-Un-oL3" id="3vD-2T-zn3"/>
-                        <outlet property="ingredientTableView" destination="R0W-2h-y5b" id="CJw-kD-Z6K"/>
-                        <outlet property="servingSizeLabel" destination="Kjt-pw-dql" id="RKF-db-CGM"/>
-                        <outlet property="tabBar" destination="4Tm-zD-vIv" id="p0K-eF-GPE"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yiY-FQ-IWo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3672.8000000000002" y="532.98350824587715"/>
-        </scene>
-    </scenes>
-    <resources>
-        <image name="cart" width="120" height="120"/>
-        <image name="chef" width="54" height="58"/>
-        <image name="save" width="40" height="36"/>
-    </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="fbm-kE-AFX"/>
-    </inferredMetricsTieBreakers>
-</document>
+                                </document>

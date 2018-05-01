@@ -34,10 +34,12 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
             foodTitle.title = passedRecipe.title
         case 1:
             cell.ingredientName.text = passedRecipe.directions[indexPath.row]
+            cell.servingSize.text = ""
             foodTitle.title = passedRecipe.title
             cell.servingSize.text = " "
         case 2:
             cell.ingredientName.text = passedRecipe.description
+            cell.servingSize.text = ""
             foodTitle.title = passedRecipe.title
             cell.servingSize.text = " "
         default:
