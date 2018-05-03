@@ -70,7 +70,7 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
     @IBAction func saveRecipes(_ sender: Any) {
         let recipe = Recipes(name: passedRecipe.title, descriptions: passedRecipe.description, meal: passedMealType, serving: passedRecipe.servingSize, direction: hugeDirection, picture: passedRecipe.picture)
         do{
-            try recipe?.managedObjectContext?.save()
+            try recipe?.managedObjectContext?.save() as? Recipes
             
             self.navigationController?.popViewController(animated: true)
         }

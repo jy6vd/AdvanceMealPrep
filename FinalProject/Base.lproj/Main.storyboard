@@ -330,7 +330,7 @@
         <scene sceneID="D4Z-C8-pUN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Q2l-lB-eCj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Week" image="chef hat" selectedImage="chef hat" id="qYN-Qr-KXR"/>
+                    <tabBarItem key="tabBarItem" title="Week" image="chef hat" selectedImage="chef hat1" id="qYN-Qr-KXR"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tfU-D1-q7W">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -571,8 +571,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="cart" width="135" height="135"/>
+        <image name="cart" width="64" height="72"/>
         <image name="chef hat" width="54" height="58"/>
+        <image name="chef hat1" width="30" height="32"/>
         <image name="favorite" width="40" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
