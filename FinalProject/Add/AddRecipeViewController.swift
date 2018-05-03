@@ -11,7 +11,7 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
     var passedRecipe: Recipe!
     var passedMealType: String?
     
-    var hugeDirection: String?
+    var hugeDirection: String = ""
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,7 +68,7 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
     }
  
     @IBAction func saveRecipes(_ sender: Any) {
-        let recipe = Recipes(name: passedRecipe.title ?? " ",descriptions: passedRecipe.description ?? " ", meal: passedMealType ?? " ", serving: passedRecipe.servingSize ?? " ", direction: hugeDirection ?? " ", picture: passedRecipe.picture ?? " ")
+        let recipe = Recipes(name: passedRecipe.title, descriptions: passedRecipe.description, meal: passedMealType, serving: passedRecipe.servingSize, direction: hugeDirection, picture: passedRecipe.picture)
         do{
             try recipe?.managedObjectContext?.save() as? Recipes
             
