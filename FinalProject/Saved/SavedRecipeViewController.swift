@@ -54,6 +54,8 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
         let recipe = recipes[indexPath.row]
         switch(recipe.meal){
         case "breakfast":
+//            tableView.beginUpdates()
+//            tableView.insertRows(at: [IndexPath(row: recipes.count-1, section: 0)], with: .automatic)
             cell.foodTitle.text = recipe.name
             cell.foodDescription.text = recipe.descriptions
             if let url = NSURL(string: recipe.picture!){
@@ -61,6 +63,7 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                     cell.foodImage.image = UIImage(data: data as Data)
                 }
             }
+//            tableView.endUpdates()
         case "lunch":
             cell.foodTitle.text = recipe.name
             cell.foodDescription.text = recipe.descriptions
