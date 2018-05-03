@@ -7,52 +7,93 @@
 //
 
 import UIKit
+import CoreData
 
 class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var meal_type: [String] = ["Breakfast", "Lunch", "Dinner", "Snack"]
-    var breakfast_array: [String] = ["Donut", "Ceral", "Yogurt", "hashbrown"]
-    var lunch_array: [String] = ["Salad", "Pasta", "Pizza", "Burger"]
-    var dinner_array: [String] = ["Chicken", "Steak", "Lamb", "Burger"]
-    var snack_array: [String] = ["Cake", "Cookie", "Pretzel", "Candy"]
+    
+    var recipes: [Recipes] = []
     @IBOutlet weak var tableView: UITableView!
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section{
-        case 0:
-           return breakfast_array.count
-        case 1:
-           return lunch_array.count
-        case 2:
-            return dinner_array.count
-        default:
-            return snack_array.count
+    override func viewWillAppear(_ animated: Bool) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
+            return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Recipes> = Recipes.fetchRequest()
+        do{
+            recipes = try managedContext.fetch(fetchRequest)
+            
+            tableView.reloadData()
+        }
+        catch{
+            print("Could not fetch")
         }
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return recipes.count
+    }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return meal_type.count
+            return meal_type.count
     }
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return
 //    }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return meal_type[section]
+        if(recipes.count > 1){
+            return meal_type[section]
+        }
+        else{
+            return nil
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! SavedRecipeTableViewCell
-        switch indexPath.section{
-            case 0:
-                cell.foodDescription.text = breakfast_array[indexPath.row]
-                cell.foodTitle.text = breakfast_array[indexPath.row]
-            case 1:
-                cell.foodDescription.text = lunch_array[indexPath.row]
-                cell.foodTitle.text = lunch_array[indexPath.row]
-            case 2:
-                cell.foodDescription.text = dinner_array[indexPath.row]
-                cell.foodTitle.text = dinner_array[indexPath.row]
-            default:
-                cell.foodDescription.text = snack_array[indexPath.row]
-                cell.foodTitle.text = snack_array[indexPath.row]
+        let recipe = recipes[indexPath.row]
+        switch(recipe.meal){
+        case "breakfast":
+            cell.foodTitle.text = recipe.name
+            cell.foodDescription.text = recipe.descriptions
+            if let url = NSURL(string: recipe.picture!){
+                if let data = NSData(contentsOf: url as URL){
+                    cell.foodImage.image = UIImage(data: data as Data)
+                }
+            }
+        case "lunch":
+            cell.foodTitle.text = recipe.name
+            cell.foodDescription.text = recipe.descriptions
+            if let url = NSURL(string: recipe.picture!){
+                if let data = NSData(contentsOf: url as URL){
+                    cell.foodImage.image = UIImage(data: data as Data)
+                }
+            }
+        case "dinner":
+            cell.foodTitle.text = recipe.name
+            cell.foodDescription.text = recipe.descriptions
+            if let url = NSURL(string: recipe.picture!){
+                if let data = NSData(contentsOf: url as URL){
+                    cell.foodImage.image = UIImage(data: data as Data)
+                }
+            }
+        case "dessert":
+        cell.foodTitle.text = recipe.name
+        cell.foodDescription.text = recipe.descriptions
+        if let url = NSURL(string: recipe.picture!){
+            if let data = NSData(contentsOf: url as URL){
+                cell.foodImage.image = UIImage(data: data as Data)
+            }
+            }
+        default:
+            cell.foodTitle.text = recipe.name
+            cell.foodDescription.text = recipe.descriptions
+            if let url = NSURL(string: recipe.picture!){
+                if let data = NSData(contentsOf: url as URL){
+                    cell.foodImage.image = UIImage(data: data as Data)
+                }
+            }
+            
         }
        
         //cell.foodImage.image = UIImage(named: "donut")
@@ -92,25 +133,25 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     }*/
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            switch indexPath.section{
-                case 0:
-                    breakfast_array.remove(at: indexPath.row)
-                    break
-                case 1:
-                    lunch_array.remove(at: indexPath.row)
-                    break
-                case 2:
-                    dinner_array.remove(at: indexPath.row)
-                    break
-                default:
-                    snack_array.remove(at: indexPath.row)
-                    break
+    //        switch indexPath.section{
+  //              case 0:
+//                    breakfast_array.remove(at: indexPath.row)
+//                    break
+//                case 1:
+//                    lunch_array.remove(at: indexPath.row)
+//                    break
+//                case 2:
+//                    dinner_array.remove(at: indexPath.row)
+//                    break
+//                default:
+//                    snack_array.remove(at: indexPath.row)
+//                    break
+            
+            recipes.remove(at: indexPath.row)
             }
             //tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
             tableView.reloadData()
         }
-    }
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()

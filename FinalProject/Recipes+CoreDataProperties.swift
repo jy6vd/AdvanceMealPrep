@@ -2,25 +2,50 @@
 //  Recipes+CoreDataProperties.swift
 //  FinalProject
 //
-//  Created by Jonathan Yee on 4/17/18.
+//  Created by Jonathan Yee on 5/2/18.
 //  Copyright © 2018 Jonathan Yee. All rights reserved.
 //
 //
 
-import Foundation
+import UIKit
 import CoreData
 
 
-extension Recipes {
+class Recipes: NSManagedObject{
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Recipes> {
         return NSFetchRequest<Recipes>(entityName: "Recipes")
     }
 
     @NSManaged public var descriptions: String?
+    @NSManaged public var meal: String?
     @NSManaged public var name: String?
-    @NSManaged public var serving: Double
+    @NSManaged public var serving: String?
+    @NSManaged public var direction: String?
+    @NSManaged public var picture: String?
     @NSManaged public var rawIngredients: NSOrderedSet?
+    
+    convenience init?(name: String?,descriptions: String?, meal: String?, serving: String?, direction: String?, picture: String?){
+        
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        
+        var ingredients: [Ingredients]?{
+            return self.rawIngredients?.array as? [Ingredients]
+        }
+        
+        guard let context = appDelegate?.persistentContainer.viewContext
+            else{
+                return nil
+        }
+        self.init(entity: Recipes.entity(), insertInto: context)
+        self.descriptions = descriptions
+        self.meal = meal
+        self.serving = serving
+        self.direction = direction
+        self.name = name
+        self.picture = picture
+}
+    
 
 }
 

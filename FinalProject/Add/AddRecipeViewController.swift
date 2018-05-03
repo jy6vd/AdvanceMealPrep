@@ -9,6 +9,10 @@
 import UIKit
 class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     var passedRecipe: Recipe!
+    var passedMealType: String?
+    
+    var hugeDirection: String?
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch(tabBar.selectedSegmentIndex){
@@ -34,6 +38,7 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
             foodTitle.title = passedRecipe.title
         case 1:
             cell.ingredientName.text = passedRecipe.directions[indexPath.row]
+            hugeDirection = passedRecipe.directions.joined(separator: "/")
             foodTitle.title = passedRecipe.title
             cell.servingSize.text = " "
         case 2:
@@ -63,6 +68,15 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
     }
  
     @IBAction func saveRecipes(_ sender: Any) {
+        let recipe = Recipes(name: passedRecipe.title ?? " ",descriptions: passedRecipe.description ?? " ", meal: passedMealType ?? " ", serving: passedRecipe.servingSize ?? " ", direction: hugeDirection ?? " ", picture: passedRecipe.picture ?? " ")
+        do{
+            try recipe?.managedObjectContext?.save()
+            
+            self.navigationController?.popViewController(animated: true)
+        }
+        catch{
+            print("Could not save recipe")
+        }
     }
     
     
@@ -71,6 +85,10 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         ingredientTableView.dataSource = self
         ingredientTableView.delegate = self
+        
+        
+         hugeDirection = passedRecipe.directions.joined(separator: "/")
+        print(hugeDirection)
         
         // Do any additional setup after loading the view, typically from a nib.
     }
