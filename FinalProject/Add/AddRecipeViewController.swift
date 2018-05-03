@@ -87,7 +87,7 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
         ingredientTableView.delegate = self
         
         
-         hugeDirection = passedRecipe.directions.joined(separator: "/")
+        hugeDirection = passedRecipe.directions.joined(separator: "/")
         print(hugeDirection)
         
         // Do any additional setup after loading the view, typically from a nib.
