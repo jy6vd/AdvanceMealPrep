@@ -61,7 +61,7 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! SavedRecipeTableViewCell
         let recipe = recipes[indexPath.row]
-        switch(recipe.meal){
+        switch recipe.meal{
         case "breakfast":
 //            tableView.beginUpdates()
 //            tableView.insertRows(at: [IndexPath(row: recipes.count-1, section: 0)], with: .automatic)

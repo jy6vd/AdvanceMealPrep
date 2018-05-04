@@ -10,8 +10,6 @@ import UIKit
 class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var passedRecipe: Recipe!
     var passedMealType: String?
-    
-    var hugeDirection: String = ""
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
