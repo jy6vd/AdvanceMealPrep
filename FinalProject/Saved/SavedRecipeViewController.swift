@@ -10,11 +10,15 @@ import UIKit
 import CoreData
 
 class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var meal_type: [String] = ["Breakfast", "Lunch", "Dinner", "Snack"]
-    
+    var meal_type: [String] = ["Breakfast", "Lunch", "Dinner", "Dessert", "Snack"]
+    var breakfast: [Recipes] = []
+    var lunch: [Recipes] = []
+    var dinner: [Recipes] = []
+    var dessert: [Recipes] = []
+    var snack: [Recipes] = []
     var recipes: [Recipes] = []
     
-      var ingredients: [Ingredients] = []
+    var ingredients: [Ingredients] = []
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -25,21 +29,60 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
         let managedContext = appDelegate.persistentContainer.viewContext
         //let fetchRequest: NSFetchRequest<Recipes> = Recipes.fetchRequest()
         let fetchRequet = NSFetchRequest<NSFetchRequestResult>(entityName: "Recipes")
-        //let fetchRequest2 = NSFetchRequest<NSFetchRequestResult>(entityName: "Ingredients")
+        let fetchRequet2 = NSFetchRequest<NSFetchRequestResult>(entityName: "Ingredients")
+        fetchRequet2.resultType = .dictionaryResultType
         do{
 //            recipes = try managedContext.fetch(fetchRequest)
             let result = try managedContext.fetch(fetchRequet)
-            //let result2 = try managedContext.fetch(fetchRequest2)
-            
+            let result2 = try managedContext.fetch(fetchRequet2)
+            for data in result2{
+                print((data as AnyObject).value(forKey: "name") ?? " ",(data as AnyObject).value(forKey: "quantity") ?? " ",(data as AnyObject).value(forKey: "units") ?? " ")
+            }
             recipes = result as! [Recipes]
-            
-            tableView.reloadData()
+            seperateRecipes()
         }
         catch{
             print("Could not fetch")
         }
     }
     
+    func seperateRecipes(){
+        for recipe in recipes{
+//            switch recipe.meal{
+//                case "breakfast":
+//                    breakfast.append(recipe)
+//                case "lunch":
+//                    lunch.append(recipe)
+//                case "dinner":
+//                    dinner.append(recipe)
+//                case "dessert":
+//                    dessert.append(recipe)
+//                default:
+//                    snack.append(recipe)
+//            }
+            if(recipe.meal! == "breakfast"){
+                breakfast.append(recipe)
+                print("breakfast count: \(breakfast.count)")
+                print("Recipe meal: \(recipe.meal!)")
+            }
+            else if(recipe.meal! == "lunch"){
+                lunch.append(recipe)
+                 print("lunch count: \(lunch.count)")
+            }
+            else if(recipe.meal! == "dinner"){
+                dinner.append(recipe)
+                 print("dinner count: \(dinner.count)")
+            }else if(recipe.meal! == "dessert"){
+                dessert.append(recipe)
+                print("dessert count: \(dessert.count)")
+            }else{
+                snack.append(recipe)
+                 print("snack count: \(snack.count)")
+            }
+        }
+            tableView.reloadData()
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return recipes.count
     }
@@ -50,7 +93,7 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
 //        return
 //    }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if(recipes.count >= 1){
+        if(!recipes.isEmpty){
             return meal_type[section]
         }
         else{
@@ -60,57 +103,86 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! SavedRecipeTableViewCell
-        let recipe = recipes[indexPath.row]
-        switch recipe.meal{
-        case "breakfast":
-//            tableView.beginUpdates()
-//            tableView.insertRows(at: [IndexPath(row: recipes.count-1, section: 0)], with: .automatic)
-            cell.foodTitle.text = recipe.name
-            cell.foodDescription.text = recipe.descriptions
-            if let url = NSURL(string: recipe.picture!){
-                if let data = NSData(contentsOf: url as URL){
-                    cell.foodImage.image = UIImage(data: data as Data)
-                }
+        
+//        if(recipes.count > 0){
+            switch(indexPath.section){
+                case 0:
+                    if(breakfast.isEmpty){
+                        cell.foodTitle.text = breakfast[indexPath.row].name
+                        cell.foodDescription.text = breakfast[indexPath.row].descriptions
+                        if let url = NSURL(string: breakfast[indexPath.row].picture!){
+                            if let data = NSData(contentsOf: url as URL){
+                                cell.foodImage.image = UIImage(data: data as Data)
+                            }
+                        }
+                    }else{
+                        cell.foodTitle.text = " "
+                        cell.foodDescription.text = " "
+                    }
+                print("breakfast")
+                case 1:
+                    if(lunch.count > 0){
+                        print(indexPath.row)
+                        cell.foodTitle.text = lunch[indexPath.row].name
+                        cell.foodDescription.text = lunch[indexPath.row].descriptions
+                        if let url = NSURL(string: lunch[indexPath.row].picture!){
+                            if let data = NSData(contentsOf: url as URL){
+                                cell.foodImage.image = UIImage(data: data as Data)
+                            }
+                        }
+                    }else{
+                        cell.foodTitle.text = " "
+                        cell.foodDescription.text = " "
+                    }
+                    print("lunch")
+                case 2:
+                     if(dinner.count > 0){
+                        cell.foodTitle.text = dinner[indexPath.row].name
+                        cell.foodDescription.text = dinner[indexPath.row].descriptions
+                        if let url = NSURL(string: dinner[indexPath.row].picture!){
+                            if let data = NSData(contentsOf: url as URL){
+                                cell.foodImage.image = UIImage(data: data as Data)
+                            }
+                        }
+                     }else{
+                        cell.foodTitle.text = " "
+                        cell.foodDescription.text = " "
+                     }
+                    print("dinner")
+                case 3:
+                    if(dessert.count > 0){
+                        cell.foodTitle.text = dessert[indexPath.row].name
+                        cell.foodDescription.text = dessert[indexPath.row].descriptions
+                        if let url = NSURL(string: dessert[indexPath.row].picture!){
+                            if let data = NSData(contentsOf: url as URL){
+                                    cell.foodImage.image = UIImage(data: data as Data)
+                                }
+                            }
+                    }else{
+                        cell.foodTitle.text = " "
+                        cell.foodDescription.text = " "
+                    }
+                    print("dessert")
+                default:
+                     if(snack.count > 0){
+                        cell.foodTitle.text = snack[indexPath.row].name
+                        cell.foodDescription.text = snack[indexPath.row].descriptions
+                        if let url = NSURL(string: snack[indexPath.row].picture!){
+                            if let data = NSData(contentsOf: url as URL){
+                                cell.foodImage.image = UIImage(data: data as Data)
+                            }
+                        }
+                     }else{
+                        cell.foodTitle.text = " "
+                        cell.foodDescription.text = " "
+                     }
+                    print("snack")
             }
-//            tableView.endUpdates()
-        case "lunch":
-            cell.foodTitle.text = recipe.name
-            cell.foodDescription.text = recipe.descriptions
-            if let url = NSURL(string: recipe.picture!){
-                if let data = NSData(contentsOf: url as URL){
-                    cell.foodImage.image = UIImage(data: data as Data)
-                }
-            }
-        case "dinner":
-            cell.foodTitle.text = recipe.name
-            cell.foodDescription.text = recipe.descriptions
-            if let url = NSURL(string: recipe.picture!){
-                if let data = NSData(contentsOf: url as URL){
-                    cell.foodImage.image = UIImage(data: data as Data)
-                }
-            }
-        case "dessert":
-        cell.foodTitle.text = recipe.name
-        cell.foodDescription.text = recipe.descriptions
-        if let url = NSURL(string: recipe.picture!){
-            if let data = NSData(contentsOf: url as URL){
-                cell.foodImage.image = UIImage(data: data as Data)
-            }
-            }
-        default:
-            cell.foodTitle.text = recipe.name
-            cell.foodDescription.text = recipe.descriptions
-            if let url = NSURL(string: recipe.picture!){
-                if let data = NSData(contentsOf: url as URL){
-                    cell.foodImage.image = UIImage(data: data as Data)
-                }
-            }
-            
-        }
+//        }
        
         //cell.foodImage.image = UIImage(named: "donut")
         return cell
-    }
+}
     
 
     @IBAction func addRecipe(_ sender: UIBarButtonItem) {
@@ -191,6 +263,8 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.reloadData()
+
         // Do any additional setup after loading the view.
         
     }

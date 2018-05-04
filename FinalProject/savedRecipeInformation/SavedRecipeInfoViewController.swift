@@ -45,12 +45,6 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
         default:
             break
         }
-        if let url = NSURL(string: passedRecipe.picture){
-            if let data = NSData(contentsOf: url as URL){
-                foodImage.image = UIImage(data: data as Data)
-            }
-        }
-        servingSizeLabel.text = "Serving Size: \(passedRecipe.servingSize)"
         return cell    }
     
     @IBOutlet weak var foodImage: UIImageView!
@@ -65,8 +59,7 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
     var servingSize: String = " "
     var ingredients: [Ingredients] = []
 
-    
-    @IBAction func removeRecipe(_ sender: Any) {
+    @IBAction func deleteRecipe(_ sender: Any) {
     }
     
     @IBAction func segmentControlChanged(_ sender: Any) {
