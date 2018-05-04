@@ -107,7 +107,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
             let indexPath = self.recipeTableView.indexPathForSelectedRow!
             let secondViewController = segue.destination as? AddRecipeViewController
             let passRecipe = allRecipes[indexPath.section].recipes[indexPath.row]
-            let passMealType = allRecipes[indexPath.row].mealType
+            let passMealType = allRecipes[indexPath.section].mealType
             
             print("meal \(passMealType)")
             secondViewController?.passedMealType = passMealType

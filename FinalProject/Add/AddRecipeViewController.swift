@@ -105,10 +105,8 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
 //            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "Saved") as! SavedRecipeViewController
 //            self.show(nextViewController, sender: self)
             
-            let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController];
-            self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true);
-            
-            
+            let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+            self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
         }
         catch{
             print("Could not save recipe")

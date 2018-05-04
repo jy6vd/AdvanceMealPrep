@@ -39,14 +39,12 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                 print((data as AnyObject).value(forKey: "name") ?? " ",(data as AnyObject).value(forKey: "quantity") ?? " ",(data as AnyObject).value(forKey: "units") ?? " ")
             }
             recipes = result as! [Recipes]
+            seperateRecipes()
         }
         catch{
             print("Could not fetch")
         }
-        seperateRecipes()
-        
     }
-    
     func seperateRecipes(){
         for recipe in recipes{
 //            switch recipe.meal{
@@ -84,7 +82,20 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return recipes.count
+        switch(section){
+        case 0:
+            return breakfast.count
+        case 1:
+            return lunch.count
+        case 2:
+            return dinner.count
+        case 3:
+            return dessert.count
+        case 4:
+            return snack.count
+        default:
+            return 0
+        }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
             return meal_type.count
@@ -103,11 +114,9 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! SavedRecipeTableViewCell
-        
-//        if(recipes.count > 0){
+        if(recipes.count > 0){
             switch(indexPath.section){
                 case 0:
-                    if(breakfast.isEmpty){
                         cell.foodTitle.text = breakfast[indexPath.row].name
                         cell.foodDescription.text = breakfast[indexPath.row].descriptions
                         if let url = NSURL(string: breakfast[indexPath.row].picture!){
@@ -115,13 +124,8 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                                 cell.foodImage.image = UIImage(data: data as Data)
                             }
                         }
-                    }else{
-                        cell.foodTitle.text = " "
-                        cell.foodDescription.text = " "
-                    }
                 print("breakfast")
                 case 1:
-                    if(lunch.count > 0){
                         print(indexPath.row)
                         cell.foodTitle.text = lunch[indexPath.row].name
                         cell.foodDescription.text = lunch[indexPath.row].descriptions
@@ -130,13 +134,8 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                                 cell.foodImage.image = UIImage(data: data as Data)
                             }
                         }
-                    }else{
-                        cell.foodTitle.text = " "
-                        cell.foodDescription.text = " "
-                    }
                     print("lunch")
                 case 2:
-                     if(dinner.count > 0){
                         cell.foodTitle.text = dinner[indexPath.row].name
                         cell.foodDescription.text = dinner[indexPath.row].descriptions
                         if let url = NSURL(string: dinner[indexPath.row].picture!){
@@ -144,13 +143,8 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                                 cell.foodImage.image = UIImage(data: data as Data)
                             }
                         }
-                     }else{
-                        cell.foodTitle.text = " "
-                        cell.foodDescription.text = " "
-                     }
                     print("dinner")
                 case 3:
-                    if(dessert.count > 0){
                         cell.foodTitle.text = dessert[indexPath.row].name
                         cell.foodDescription.text = dessert[indexPath.row].descriptions
                         if let url = NSURL(string: dessert[indexPath.row].picture!){
@@ -158,13 +152,8 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                                     cell.foodImage.image = UIImage(data: data as Data)
                                 }
                             }
-                    }else{
-                        cell.foodTitle.text = " "
-                        cell.foodDescription.text = " "
-                    }
                     print("dessert")
                 default:
-                     if(snack.count > 0){
                         cell.foodTitle.text = snack[indexPath.row].name
                         cell.foodDescription.text = snack[indexPath.row].descriptions
                         if let url = NSURL(string: snack[indexPath.row].picture!){
@@ -172,13 +161,9 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                                 cell.foodImage.image = UIImage(data: data as Data)
                             }
                         }
-                     }else{
-                        cell.foodTitle.text = " "
-                        cell.foodDescription.text = " "
-                     }
                     print("snack")
             }
-//        }
+       }
        
         //cell.foodImage.image = UIImage(named: "donut")
         return cell
@@ -217,35 +202,69 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     }*/
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-    //        switch indexPath.section{
-  //              case 0:
-//                    breakfast_array.remove(at: indexPath.row)
-//                    break
-//                case 1:
-//                    lunch_array.remove(at: indexPath.row)
-//                    break
-//                case 2:
-//                    dinner_array.remove(at: indexPath.row)
-//                    break
-//                default:
-//                    snack_array.remove(at: indexPath.row)
-//                    break
-            
-            recipes.remove(at: indexPath.row)
+            switch indexPath.section{
+                case 0:
+                    breakfast.remove(at: indexPath.row)
+                    break
+                case 1:
+                    lunch.remove(at: indexPath.row)
+                    break
+                case 2:
+                    dinner.remove(at: indexPath.row)
+                    break
+                case 3:
+                    dessert.remove(at: indexPath.row)
+                default:
+                    snack.remove(at: indexPath.row)
+                    break
             }
             //tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
             tableView.reloadData()
         }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "savedRecipeSegue"{
             let indexPath = self.tableView.indexPathForSelectedRow!
+            let sectionNumber = indexPath.section
             let secondViewController = segue.destination as? SavedRecipeInfoViewController
-            let passName = recipes[indexPath.row].name
-            let passDirection = recipes[indexPath.row].direction
-            let pasDescription = recipes[indexPath.row].descriptions
-            let passImage = recipes[indexPath.row].picture
-            let passServing = recipes[indexPath.row].serving
+            let passName: String?
+            let passDirection: String?
+            let pasDescription: String?
+            let passImage: String?
+            let passServing: String?
+            switch sectionNumber{
+            case 0:
+                passName = breakfast[indexPath.row].name
+                passDirection = breakfast[indexPath.row].direction
+                pasDescription = breakfast[indexPath.row].descriptions
+                passImage = breakfast[indexPath.row].picture
+                passServing = breakfast[indexPath.row].serving
+            case 1:
+                passName = lunch[indexPath.row].name
+                passDirection = lunch[indexPath.row].direction
+                pasDescription = lunch[indexPath.row].descriptions
+                passImage = lunch[indexPath.row].picture
+                passServing = lunch[indexPath.row].serving
+            case 2:
+                passName = dinner[indexPath.row].name
+                passDirection = dinner[indexPath.row].direction
+                pasDescription = dinner[indexPath.row].descriptions
+                passImage = dinner[indexPath.row].picture
+                passServing = dinner[indexPath.row].serving
+            case 3:
+                passName = dessert[indexPath.row].name
+                passDirection = dessert[indexPath.row].direction
+                pasDescription = dessert[indexPath.row].descriptions
+                passImage = dessert[indexPath.row].picture
+                passServing = dessert[indexPath.row].serving
+            default:
+                 passName = snack[indexPath.row].name
+                 passDirection = snack[indexPath.row].direction
+                 pasDescription = snack[indexPath.row].descriptions
+                 passImage = snack[indexPath.row].picture
+                 passServing = snack[indexPath.row].serving
+            }
             
             secondViewController?.imageString = passImage!
             secondViewController?.servingSize = passServing!
@@ -266,7 +285,6 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
         // Do any additional setup after loading the view.
         
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
