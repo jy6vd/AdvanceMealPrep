@@ -18,12 +18,12 @@ class Ingredients: NSManagedObject {
     }
 
     @NSManaged public var name: String?
-    @NSManaged public var quantity: Double
+    @NSManaged public var quantity: String?
     @NSManaged public var units: String?
     @NSManaged public var recipe: Recipes?
 
 
-    convenience init?(name: String, quantity: Double, unit: String, recipe: Recipes){
+    convenience init?(name: String, quantity: String, unit: String, recipe: Recipes){
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         guard let context = appDelegate?.persistentContainer.viewContext else{
             return nil

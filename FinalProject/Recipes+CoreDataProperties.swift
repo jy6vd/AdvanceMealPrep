@@ -25,13 +25,13 @@ class Recipes: NSManagedObject{
     @NSManaged public var picture: String?
     @NSManaged public var rawIngredients: NSOrderedSet?
     
+    var ingredients: [Ingredients]?{
+        return self.rawIngredients?.array as? [Ingredients]
+    }
+    
     convenience init?(name: String?,descriptions: String?, meal: String?, serving: String?, direction: String?, picture: String?){
         
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        
-        var ingredients: [Ingredients]?{
-            return self.rawIngredients?.array as? [Ingredients]
-        }
         
         guard let context = appDelegate?.persistentContainer.viewContext
             else{

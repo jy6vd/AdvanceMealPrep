@@ -13,6 +13,9 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     var meal_type: [String] = ["Breakfast", "Lunch", "Dinner", "Snack"]
     
     var recipes: [Recipes] = []
+    
+      var ingredients: [Ingredients] = []
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -20,9 +23,15 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
             return
         }
         let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<Recipes> = Recipes.fetchRequest()
+        //let fetchRequest: NSFetchRequest<Recipes> = Recipes.fetchRequest()
+        let fetchRequet = NSFetchRequest<NSFetchRequestResult>(entityName: "Recipes")
+        //let fetchRequest2 = NSFetchRequest<NSFetchRequestResult>(entityName: "Ingredients")
         do{
-            recipes = try managedContext.fetch(fetchRequest)
+//            recipes = try managedContext.fetch(fetchRequest)
+            let result = try managedContext.fetch(fetchRequet)
+            //let result2 = try managedContext.fetch(fetchRequest2)
+            
+            recipes = result as! [Recipes]
             
             tableView.reloadData()
         }
@@ -41,7 +50,7 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
 //        return
 //    }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if(recipes.count > 1){
+        if(recipes.count >= 1){
             return meal_type[section]
         }
         else{
@@ -155,6 +164,28 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
             //tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
             tableView.reloadData()
         }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "savedRecipeSegue"{
+            let indexPath = self.tableView.indexPathForSelectedRow!
+            let secondViewController = segue.destination as? SavedRecipeInfoViewController
+            let passName = recipes[indexPath.row].name
+            let passDirection = recipes[indexPath.row].direction
+            let pasDescription = recipes[indexPath.row].descriptions
+            let passImage = recipes[indexPath.row].picture
+            let passServing = recipes[indexPath.row].serving
+            
+            secondViewController?.imageString = passImage!
+            secondViewController?.servingSize = passServing!
+            secondViewController?.foodTitle.title = passName
+            secondViewController?.hugeDirection = passDirection!
+            secondViewController?.foodDescription = pasDescription!
+            secondViewController?.ingredients = ingredients
+//            secondViewController?.
+            
+            
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
