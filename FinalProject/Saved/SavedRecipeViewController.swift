@@ -39,11 +39,12 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                 print((data as AnyObject).value(forKey: "name") ?? " ",(data as AnyObject).value(forKey: "quantity") ?? " ",(data as AnyObject).value(forKey: "units") ?? " ")
             }
             recipes = result as! [Recipes]
-            seperateRecipes()
         }
         catch{
             print("Could not fetch")
         }
+        seperateRecipes()
+        
     }
     
     func seperateRecipes(){
@@ -80,7 +81,6 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                  print("snack count: \(snack.count)")
             }
         }
-            tableView.reloadData()
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -263,8 +263,6 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.reloadData()
-
         // Do any additional setup after loading the view.
         
     }
