@@ -7,8 +7,12 @@
 //
 
 import UIKit
-
 class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    var passedRecipe: Recipe!
+    var passedMealType: String?
+    
+    var hugeDirection: String = ""
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch(tabBar.selectedSegmentIndex){
@@ -43,8 +47,13 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
         default:
             break
         }
-        return cell
-    }
+        if let url = NSURL(string: passedRecipe.picture){
+            if let data = NSData(contentsOf: url as URL){
+                foodImage.image = UIImage(data: data as Data)
+            }
+        }
+        servingSizeLabel.text = "Serving Size: \(passedRecipe.servingSize)"
+        return cell    }
     
     @IBOutlet weak var foodImage: UIImageView!
     @IBOutlet weak var tabBar: UISegmentedControl!
