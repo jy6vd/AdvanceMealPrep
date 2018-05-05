@@ -21,7 +21,6 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     var ingredients: [Ingredients] = []
     
     @IBOutlet weak var tableView: UITableView!
-    
     override func viewWillAppear(_ animated: Bool) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
             return
@@ -30,8 +29,8 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
         //let fetchRequest: NSFetchRequest<Recipes> = Recipes.fetchRequest()
         let fetchRequet = NSFetchRequest<NSFetchRequestResult>(entityName: "Recipes")
         let fetchRequet2 = NSFetchRequest<NSFetchRequestResult>(entityName: "Ingredients")
-        fetchRequet2.resultType = .dictionaryResultType
-        do{
+        //fetchRequet2.resultType = .managedObjectResultType
+            do{
 //            recipes = try managedContext.fetch(fetchRequest)
             let result = try managedContext.fetch(fetchRequet)
             let result2 = try managedContext.fetch(fetchRequet2)
@@ -79,6 +78,23 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                  print("snack count: \(snack.count)")
             }
         }
+        breakfast = uniqueElementsFrom(array: breakfast)
+        lunch = uniqueElementsFrom(array: lunch)
+         dinner = uniqueElementsFrom(array: dinner)
+         dessert = uniqueElementsFrom(array: dessert)
+         snack = uniqueElementsFrom(array: snack)
+        tableView.reloadData()
+    }
+    func uniqueElementsFrom(array: [Recipes]) -> [Recipes]{
+        var set = Set<Recipes>()
+        let result = array.filter{
+            guard !set.contains($0) else{
+                return false
+            }
+            set.insert($0)
+            return true
+        }
+        return result
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -202,24 +218,23 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     }*/
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            switch indexPath.section{
-                case 0:
-                    breakfast.remove(at: indexPath.row)
-                    break
-                case 1:
-                    lunch.remove(at: indexPath.row)
-                    break
-                case 2:
-                    dinner.remove(at: indexPath.row)
-                    break
-                case 3:
-                    dessert.remove(at: indexPath.row)
-                default:
-                    snack.remove(at: indexPath.row)
-                    break
-            }
-            //tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
-            tableView.reloadData()
+            deleteRecipe(at: indexPath)
+//            switch indexPath.section{
+//                case 0:
+//                    breakfast.remove(at: indexPath.row)
+//                    break
+//                case 1:
+//                    lunch.remove(at: indexPath.row)
+//                    break
+//                case 2:
+//                    dinner.remove(at: indexPath.row)
+//                    break
+//                case 3:
+//                    dessert.remove(at: indexPath.row)
+//                default:
+//                    snack.remove(at: indexPath.row)
+//                    break
+//            }
         }
     }
     
@@ -271,10 +286,45 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
             secondViewController?.foodTitle.title = passName
             secondViewController?.hugeDirection = passDirection!
             secondViewController?.foodDescription = pasDescription!
-            secondViewController?.ingredients = ingredients
+            //secondViewController?.ingredients = recipes[indexPath.row].ingredients!
 //            secondViewController?.
             
+    }
+}
+    func deleteRecipe(at indexPath: IndexPath){
+        let recipe = recipes[indexPath.row]
+        
+        guard let managedContext = recipe.managedObjectContext else{
+            return
+        }
+        managedContext.delete(recipe)
+        
+        do{
+            try managedContext.save()
             
+            recipes.remove(at: indexPath.row)
+            switch indexPath.section{
+            case 0:
+                breakfast.remove(at: indexPath.row)
+                break
+            case 1:
+                lunch.remove(at: indexPath.row)
+                break
+            case 2:
+                dinner.remove(at: indexPath.row)
+                break
+            case 3:
+                dessert.remove(at: indexPath.row)
+            default:
+                snack.remove(at: indexPath.row)
+                break
+            }
+            
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }catch{
+            print("Could not delete")
+            
+            tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
 
