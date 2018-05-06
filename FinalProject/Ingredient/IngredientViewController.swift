@@ -19,7 +19,7 @@ class IngredientViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! IngredientTableViewCell
         
-        cell.myLabel.text = list[indexPath.row]
+        cell.label.text = list[indexPath.row]
         
         return(cell)
     }
