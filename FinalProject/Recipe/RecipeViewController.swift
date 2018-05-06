@@ -12,19 +12,20 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
 
     let allRecipes: [mealType] = Response<mealType>.retrieve(fromResource: "mealJSON")
     
-    var filteredRecipes: [Recipe] = []
+    var filteredRecipes = [Recipe]()
+    
+    var allRecipeToFilter = [Recipe]()
     
     
     var isSearchingRecipe = false
     @IBOutlet weak var recipeTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         recipeTableView.dataSource = self
         recipeTableView.delegate = self
         searchBar.delegate = self
-        
+        addRecipeToFilter()
         searchBar.returnKeyType = UIReturnKeyType.done
 
         // Do any additional setup after loading the view.
@@ -36,7 +37,12 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return allRecipes.count
+        if(isSearchingRecipe){
+            return 0
+        }else{
+             return allRecipes.count
+        }
+        
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return allRecipes[section].mealType
@@ -51,9 +57,9 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! RecipeTableViewCell
-        
         if(isSearchingRecipe){
             cell.foodTitle.text = filteredRecipes[indexPath.row].title
+            print(filteredRecipes[indexPath.row].description)
             cell.foodDescription.text = filteredRecipes[indexPath.row].description
             if let url = NSURL(string: filteredRecipes[indexPath.row].picture){
                 if let data = NSData(contentsOf: url as URL){
@@ -69,6 +75,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
                     cell.foodImage.image = UIImage(data: data as Data)
                 }
             }
+
         }
     
         return cell
@@ -83,14 +90,19 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
             recipeTableView.reloadData()
             
         } else {
-            
             isSearchingRecipe = true
-            for recipe in allRecipes {
-                filteredRecipes.append(contentsOf: recipe.recipes.filter{ $0.title.lowercased().contains(searchText) })
-         }
-            
-            
+            filteredRecipes = allRecipeToFilter.filter{ $0.title.lowercased().contains(searchText.lowercased()) }
+            }
             recipeTableView.reloadData()
+    }
+    func addRecipeToFilter(){
+        var num = 0
+        for recipe in allRecipes{
+            for uniqueRecipe in recipe.recipes{
+                allRecipeToFilter.append(uniqueRecipe)
+                //print(allRecipeToFilter[num].description)
+                num = num + 1
+            }
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

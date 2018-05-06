@@ -34,15 +34,12 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
         case 0:
             cell.ingredientName.text = passedRecipe.ingredients[indexPath.row].title
             cell.servingSize.text = "\(passedRecipe.ingredients[indexPath.row].quantity) \(passedRecipe.ingredients[indexPath.row].units)"
-            foodTitle.title = passedRecipe.title
         case 1:
             cell.ingredientName.text = passedRecipe.directions[indexPath.row]
             hugeDirection = passedRecipe.directions.joined(separator: "/")
-            foodTitle.title = passedRecipe.title
             cell.servingSize.text = " "
         case 2:
             cell.ingredientName.text = passedRecipe.description
-            foodTitle.title = passedRecipe.title
             cell.servingSize.text = " "
         default:
             break
@@ -101,6 +98,7 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         ingredientTableView.dataSource = self
         ingredientTableView.delegate = self
+         foodTitle.title = passedRecipe.title
         
         
          hugeDirection = passedRecipe.directions.joined(separator: "/")
