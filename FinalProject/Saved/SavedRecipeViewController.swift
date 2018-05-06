@@ -17,8 +17,8 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     var dessert: [Recipes] = []
     var snack: [Recipes] = []
     var recipes: [Recipes] = []
-    var filteredRecipes = Set<Recipes>()
     var ingredients: [Ingredients] = []
+    var recipeWithIngredient: [AnyObject] = []
     
     @IBOutlet weak var tableView: UITableView!
     override func viewWillAppear(_ animated: Bool) {
@@ -26,18 +26,22 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
             return
         }
         let managedContext = appDelegate.persistentContainer.viewContext
-        //let fetchRequest: NSFetchRequest<Recipes> = Recipes.fetchRequest()
+        let fetchRequest2: NSFetchRequest<Ingredients> = Ingredients.fetchRequest()
         let fetchRequet = NSFetchRequest<NSFetchRequestResult>(entityName: "Recipes")
-        //let fetchRequet2 = NSFetchRequest<NSFetchRequestResult>(entityName: "Ingredients")
-        //fetchRequet2.resultType = .managedObjectResultType
             do{
 //            recipes = try managedContext.fetch(fetchRequest)
             let result = try managedContext.fetch(fetchRequet)
-//            let result2 = try managedContext.fetch(fetchRequet2)
-//            for data in result2{
-//                print((data as AnyObject).value(forKey: "name") ?? " ",(data as AnyObject).value(forKey: "quantity") ?? " ",(data as AnyObject).value(forKey: "units") ?? " ")
-//            }
+            //let result2 = try managedContext.fetch(fetchRequest2)
+                
+            ingredients = try managedContext.fetch(fetchRequest2)
+            //for data in result2{
+                //print((data as AnyObject).value(forKey: "name") ?? " ",(data as AnyObject).value(forKey: "quantity") ?? " ",(data as AnyObject).value(forKey: "units") ?? " ")
+            //}
             recipes = result as! [Recipes]
+            //ingredients = result2
+                for uniqueIngredients in ingredients{
+                    print(uniqueIngredients.name!)
+                }
             
             seperateRecipes()
         }
@@ -72,19 +76,8 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
         
     }
     func uniqueElementsFrom(array: [Recipes]) -> [Recipes]{
-        //Create an empty Set to track unique items
+
         var set = Set<String>()
-//        let result = array.filter {
-//            guard !set.contains($0) else {
-//                //If the set already contains this object, return false
-//                //so we skip it
-//                return false
-//            }
-//            //Add this item to the set since it will now be in the array
-//            set.insert($0)
-//            //Return true so that filtered array will contain this item.
-//            return true
-//        }
         var unique = [Recipes]()
         for uniqueRecipe in array{
             if !set.contains(uniqueRecipe.name!){
@@ -233,8 +226,8 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
             secondViewController?.foodTitle.title = passName
             secondViewController?.hugeDirection = passDirection!
             secondViewController?.foodDescription = pasDescription!
-            //secondViewController?.ingredients = recipes[indexPath.row].ingredients!
-//            secondViewController?.
+            secondViewController?.ingredients = ingredients
+
             
     }
 }

@@ -16,12 +16,7 @@ class SavedRecipeTableViewCell: UITableViewCell {
     @IBOutlet weak var foodImage: UIImageView!
     @IBOutlet weak var foodTitle: UILabel!
     @IBOutlet weak var foodDescription: UILabel!
-    //@IBOutlet weak var deleteButton: UIButton!
-    //weak var delegate: SavedRecipeDelegate?
-    
-   /* @IBAction func deleteRow(_ sender: Any) {
-        delegate?.tableViewCellDeleteCell(self)
-    }*/
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

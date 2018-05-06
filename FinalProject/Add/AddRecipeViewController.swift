@@ -14,7 +14,7 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
     
     var hugeDirection: String = ""
     
-    var ingredients: Ingredients!
+    //var ingredients: [Ingredient] = []
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -71,39 +71,29 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
     }
  
     @IBAction func saveRecipes(_ sender: Any) {
-//        let recipe = Recipes(name: passedRecipe.title, descriptions: passedRecipe.description, meal: passedMealType, serving: passedRecipe.servingSize, direction: hugeDirection, picture: passedRecipe.picture)
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-//        let ingredient = Ingredients(context: managedObject)
         let entity = NSEntityDescription.entity(forEntityName: "Recipes", in: context)
         let entity2 = NSEntityDescription.entity(forEntityName: "Ingredients", in: context)
         let recipe = NSManagedObject(entity: entity!, insertInto: context)
-        //let ingredient = NSManagedObject(entity: entity2!, insertInto: context)
             recipe.setValue(passedRecipe.title, forKey: "name")
             recipe.setValue(passedRecipe.description, forKey: "descriptions")
             recipe.setValue(passedMealType, forKey: "meal")
-            print(passedMealType!)
             recipe.setValue(passedRecipe.servingSize, forKey: "serving")
             recipe.setValue(hugeDirection, forKey: "direction")
             recipe.setValue(passedRecipe.picture, forKey: "picture")
 
-        
+//        var newIngredient = NSEntityDescription.insertNewObject(forEntityName: "Ingredients", into: context) as! Ingredients
         for x in passedRecipe.ingredients{
-            let ingredient = NSManagedObject(entity: entity2!, insertInto: context)
+             let ingredient = NSManagedObject(entity: entity2!, insertInto: context)
             ingredient.setValue(x.title, forKey: "name")
             ingredient.setValue(x.quantity, forKey: "quantity")
             ingredient.setValue(x.units, forKey: "units")
             ingredient.setValue(recipe, forKey: "recipe")
+            print("added \(x.title)")
         }
         do{
-            //recipe.setValue(ingredient, forKey: "rawIngredients")
             try context.save()
-            //self.navigationController?.popViewController(animated: true)
-            
-//            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//
-//            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "Saved") as! SavedRecipeViewController
-//            self.show(nextViewController, sender: self)
             
             let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
             self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)

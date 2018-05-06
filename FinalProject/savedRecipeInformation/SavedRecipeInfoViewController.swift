@@ -10,8 +10,8 @@ import UIKit
 class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var passedRecipe: Recipe!
     var passedMealType: String?
-
     
+    var ingredients: [Ingredients] = []
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch(tabBar.selectedSegmentIndex){
         case 0:
@@ -31,8 +31,8 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientCell", for: indexPath) as! SavedRecipeInfoTableViewCell
         switch(tabBar.selectedSegmentIndex){
         case 0:
-            //cell.ingredientName.text = ingredient
-            //cell.servingSize.text = servingSizeLabel.text
+            cell.ingredientName.text = ingredients[indexPath.row].name
+            cell.servingSize.text = ("\(ingredients[indexPath.row].quantity  ?? "") \(ingredients[indexPath.row].units  ?? "")")
             foodTitle.title = foodTitle.title
         case 1:
             cell.ingredientName.text = direction[indexPath.row]
@@ -57,7 +57,6 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
     var imageString: String = " "
     var foodDescription: String = ""
     var servingSize: String = " "
-    var ingredients: [Ingredients] = []
     
     @IBAction func segmentControlChanged(_ sender: Any) {
         ingredientTableView.reloadData()

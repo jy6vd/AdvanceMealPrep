@@ -90,8 +90,6 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
          }
             
             
-
-            //filterRecipe[].recipes = filteredRecipes
             recipeTableView.reloadData()
         }
     }
@@ -101,10 +99,9 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
             let secondViewController = segue.destination as? AddRecipeViewController
             let passRecipe = allRecipes[indexPath.section].recipes[indexPath.row]
             let passMealType = allRecipes[indexPath.section].mealType
-            
-            print("meal \(passMealType)")
             secondViewController?.passedMealType = passMealType
             secondViewController?.passedRecipe = passRecipe
+           // secondViewController?.ingredients = allRecipes[indexPath.section].recipes[indexPath.row].ingredients
         }
     }
 }

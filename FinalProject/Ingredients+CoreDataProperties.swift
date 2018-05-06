@@ -10,7 +10,7 @@
 import UIKit
 import CoreData
 
-
+@objc (Ingredients)
 class Ingredients: NSManagedObject {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Ingredients> {
@@ -28,7 +28,7 @@ class Ingredients: NSManagedObject {
         guard let context = appDelegate?.persistentContainer.viewContext else{
             return nil
         }
-        self.init(entity: Recipes.entity(), insertInto: context)
+        self.init(entity: Ingredients.entity(), insertInto: context)
         self.name = name
         self.quantity = quantity
         self.units = unit
