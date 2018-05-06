@@ -29,19 +29,10 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
         let fetchRequest2: NSFetchRequest<Ingredients> = Ingredients.fetchRequest()
         let fetchRequet = NSFetchRequest<NSFetchRequestResult>(entityName: "Recipes")
             do{
-//            recipes = try managedContext.fetch(fetchRequest)
             let result = try managedContext.fetch(fetchRequet)
-            //let result2 = try managedContext.fetch(fetchRequest2)
-                
             ingredients = try managedContext.fetch(fetchRequest2)
-            //for data in result2{
-                //print((data as AnyObject).value(forKey: "name") ?? " ",(data as AnyObject).value(forKey: "quantity") ?? " ",(data as AnyObject).value(forKey: "units") ?? " ")
-            //}
+
             recipes = result as! [Recipes]
-            //ingredients = result2
-                for uniqueIngredients in ingredients{
-                    print(uniqueIngredients.name!)
-                }
             
             seperateRecipes()
         }
@@ -130,7 +121,6 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                             }
                         }
                 case 1:
-                        print(indexPath.row)
                         cell.foodTitle.text = lunch[indexPath.row].name
                         cell.foodDescription.text = lunch[indexPath.row].descriptions
                         if let url = NSURL(string: lunch[indexPath.row].picture!){

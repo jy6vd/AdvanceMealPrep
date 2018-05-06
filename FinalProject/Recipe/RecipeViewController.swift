@@ -101,7 +101,6 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
             let passMealType = allRecipes[indexPath.section].mealType
             secondViewController?.passedMealType = passMealType
             secondViewController?.passedRecipe = passRecipe
-           // secondViewController?.ingredients = allRecipes[indexPath.section].recipes[indexPath.row].ingredients
         }
     }
 }

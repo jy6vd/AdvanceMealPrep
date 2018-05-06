@@ -10,13 +10,10 @@ import UIKit
 class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var passedRecipe: Recipe!
     var passedMealType: String?
-    
     var ingredients: [Ingredients] = []
      var filteredIngredient: [Ingredients] = []
     
-    
     func uniqueElementsFrom(array: [Ingredients]) -> [Ingredients]{
-        
         var set = Set<Ingredients>()
         var unique = [Ingredients]()
         for uniqueIngredients in array{
@@ -48,12 +45,6 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
         case 0:
             cell.ingredientName.text = filteredIngredient[indexPath.row].name
             cell.servingSize.text = ("\(ingredients[indexPath.row].quantity!) \(ingredients[indexPath.row].units!)")
-//            for uniqueIngredient in ingredients{
-//                 if( uniqueIngredient.recipe?.name == foodname && (uniqueIngredient.recipe?.name != nil && ingredients[indexPath.row].recipe!.name != nil)){
-//                    cell.ingredientName.text = uniqueIngredient.name
-//                    cell.servingSize.text = ("\(uniqueIngredient.quantity!) \(uniqueIngredient.units!)")
-//                }
-//            }
         case 1:
             cell.ingredientName.text = direction[indexPath.row]
             cell.servingSize.text = " "

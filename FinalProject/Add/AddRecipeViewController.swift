@@ -11,11 +11,7 @@ import CoreData
 class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     var passedRecipe: Recipe!
     var passedMealType: String?
-    
     var hugeDirection: String = ""
-    
-    //var ingredients: [Ingredient] = []
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch(tabBar.selectedSegmentIndex){
@@ -83,14 +79,12 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
             recipe.setValue(hugeDirection, forKey: "direction")
             recipe.setValue(passedRecipe.picture, forKey: "picture")
 
-//        var newIngredient = NSEntityDescription.insertNewObject(forEntityName: "Ingredients", into: context) as! Ingredients
         for x in passedRecipe.ingredients{
              let ingredient = NSManagedObject(entity: entity2!, insertInto: context)
             ingredient.setValue(x.title, forKey: "name")
             ingredient.setValue(x.quantity, forKey: "quantity")
             ingredient.setValue(x.units, forKey: "units")
             ingredient.setValue(recipe, forKey: "recipe")
-            print("added \(x.title)")
         }
         do{
             try context.save()
@@ -102,8 +96,6 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
             print("Could not save recipe")
         }
     }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,6 +112,5 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
 }
