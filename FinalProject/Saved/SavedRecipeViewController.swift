@@ -223,7 +223,7 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
             
             secondViewController?.imageString = passImage!
             secondViewController?.servingSize = passServing!
-            secondViewController?.foodTitle.title = passName
+            secondViewController?.foodname = passName!
             secondViewController?.hugeDirection = passDirection!
             secondViewController?.foodDescription = pasDescription!
             secondViewController?.ingredients = ingredients
@@ -233,7 +233,7 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
 }
     func deleteRecipe(at indexPath: IndexPath){
         let recipe = recipes[indexPath.row]
-        
+        //var num = 0
         guard let managedContext = recipe.managedObjectContext else{
             return
         }
@@ -242,6 +242,12 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
         do{
             try managedContext.save()
             
+            for ingredientRecipe in ingredients{
+                if(ingredientRecipe.recipe?.name == recipe.name){
+                    managedContext.delete(ingredientRecipe)
+                }
+                //num = num + 1
+            }
             recipes.remove(at: indexPath.row)
             switch indexPath.section{
             case 0:

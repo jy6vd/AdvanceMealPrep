@@ -12,10 +12,25 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
     var passedMealType: String?
     
     var ingredients: [Ingredients] = []
+     var filteredIngredient: [Ingredients] = []
+    
+    
+    func uniqueElementsFrom(array: [Ingredients]) -> [Ingredients]{
+        
+        var set = Set<Ingredients>()
+        var unique = [Ingredients]()
+        for uniqueIngredients in array{
+            if !set.contains(uniqueIngredients){
+                unique.append(uniqueIngredients)
+                set.insert(uniqueIngredients)
+            }
+        }
+        return unique
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch(tabBar.selectedSegmentIndex){
         case 0:
-            return ingredients.count
+            return filteredIngredient.count
         case 1:
             return direction.count
         default:
@@ -31,21 +46,25 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientCell", for: indexPath) as! SavedRecipeInfoTableViewCell
         switch(tabBar.selectedSegmentIndex){
         case 0:
-            cell.ingredientName.text = ingredients[indexPath.row].name
-            cell.servingSize.text = ("\(ingredients[indexPath.row].quantity  ?? "") \(ingredients[indexPath.row].units  ?? "")")
-            foodTitle.title = foodTitle.title
+            cell.ingredientName.text = filteredIngredient[indexPath.row].name
+            cell.servingSize.text = ("\(ingredients[indexPath.row].quantity!) \(ingredients[indexPath.row].units!)")
+//            for uniqueIngredient in ingredients{
+//                 if( uniqueIngredient.recipe?.name == foodname && (uniqueIngredient.recipe?.name != nil && ingredients[indexPath.row].recipe!.name != nil)){
+//                    cell.ingredientName.text = uniqueIngredient.name
+//                    cell.servingSize.text = ("\(uniqueIngredient.quantity!) \(uniqueIngredient.units!)")
+//                }
+//            }
         case 1:
             cell.ingredientName.text = direction[indexPath.row]
-            foodTitle.title = foodTitle.title
             cell.servingSize.text = " "
         case 2:
             cell.ingredientName.text = foodDescription
-            foodTitle.title = foodTitle.title
             cell.servingSize.text = " "
         default:
             break
         }
-        return cell    }
+        return cell
+    }
     
     @IBOutlet weak var foodImage: UIImageView!
     @IBOutlet weak var tabBar: UISegmentedControl!
@@ -57,6 +76,7 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
     var imageString: String = " "
     var foodDescription: String = ""
     var servingSize: String = " "
+    var foodname: String = " "
     
     @IBAction func segmentControlChanged(_ sender: Any) {
         ingredientTableView.reloadData()
@@ -66,6 +86,14 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
         super.viewDidLoad()
         ingredientTableView.dataSource = self
         ingredientTableView.delegate = self
+        foodTitle.title = foodname
+        ingredients = uniqueElementsFrom(array: ingredients)
+        for uniqueIngredient in ingredients{
+            if(foodname == uniqueIngredient.recipe?.name && uniqueIngredient.recipe?.name != nil){
+                filteredIngredient.append(uniqueIngredient)
+            }
+            filteredIngredient = uniqueElementsFrom(array: filteredIngredient)
+        }
         direction = hugeDirection.components(separatedBy: "/")
         if let url = NSURL(string: imageString){
             if let data = NSData(contentsOf: url as URL){
