@@ -544,13 +544,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UEc-9D-IFI"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="MWl-6r-bz0">
-                        <barButtonItem key="rightBarButtonItem" title="Delete" id="UMa-4E-nDn">
-                            <connections>
-                                <action selector="deleteRecipe:" destination="288-4v-WSK" id="WgP-DA-6Qg"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Title" id="MWl-6r-bz0"/>
                     <connections>
                         <outlet property="foodImage" destination="XRz-vc-jIc" id="PrK-2C-cOc"/>
                         <outlet property="foodTitle" destination="MWl-6r-bz0" id="9Sk-19-NcJ"/>
@@ -566,7 +560,7 @@
     </scenes>
     <resources>
         <image name="favorite" width="40" height="36"/>
-        <image name="shopping" width="67" height="67"/>
+        <image name="shopping" width="32" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="CXb-tW-qh7"/>

@@ -58,9 +58,6 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
     var foodDescription: String = ""
     var servingSize: String = " "
     var ingredients: [Ingredients] = []
-
-    @IBAction func deleteRecipe(_ sender: Any) {
-    }
     
     @IBAction func segmentControlChanged(_ sender: Any) {
         ingredientTableView.reloadData()

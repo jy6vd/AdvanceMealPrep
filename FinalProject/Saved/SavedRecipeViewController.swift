@@ -16,8 +16,7 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     var dinner: [Recipes] = []
     var dessert: [Recipes] = []
     var snack: [Recipes] = []
-    var recipes: [Recipes] = []
-    
+    var recipes: [Recipes] = []    
     var ingredients: [Ingredients] = []
     
     @IBOutlet weak var tableView: UITableView!
