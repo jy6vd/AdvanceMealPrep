@@ -16,7 +16,8 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     var dinner: [Recipes] = []
     var dessert: [Recipes] = []
     var snack: [Recipes] = []
-    var recipes: [Recipes] = []    
+    var recipes: [Recipes] = []
+    var filteredRecipes = Set<Recipes>()
     var ingredients: [Ingredients] = []
     
     @IBOutlet weak var tableView: UITableView!
@@ -27,16 +28,17 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
         let managedContext = appDelegate.persistentContainer.viewContext
         //let fetchRequest: NSFetchRequest<Recipes> = Recipes.fetchRequest()
         let fetchRequet = NSFetchRequest<NSFetchRequestResult>(entityName: "Recipes")
-        let fetchRequet2 = NSFetchRequest<NSFetchRequestResult>(entityName: "Ingredients")
+        //let fetchRequet2 = NSFetchRequest<NSFetchRequestResult>(entityName: "Ingredients")
         //fetchRequet2.resultType = .managedObjectResultType
             do{
 //            recipes = try managedContext.fetch(fetchRequest)
             let result = try managedContext.fetch(fetchRequet)
-            let result2 = try managedContext.fetch(fetchRequet2)
-            for data in result2{
-                print((data as AnyObject).value(forKey: "name") ?? " ",(data as AnyObject).value(forKey: "quantity") ?? " ",(data as AnyObject).value(forKey: "units") ?? " ")
-            }
+//            let result2 = try managedContext.fetch(fetchRequet2)
+//            for data in result2{
+//                print((data as AnyObject).value(forKey: "name") ?? " ",(data as AnyObject).value(forKey: "quantity") ?? " ",(data as AnyObject).value(forKey: "units") ?? " ")
+//            }
             recipes = result as! [Recipes]
+            
             seperateRecipes()
         }
         catch{
@@ -45,55 +47,52 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     }
     func seperateRecipes(){
         for recipe in recipes{
-//            switch recipe.meal{
-//                case "breakfast":
-//                    breakfast.append(recipe)
-//                case "lunch":
-//                    lunch.append(recipe)
-//                case "dinner":
-//                    dinner.append(recipe)
-//                case "dessert":
-//                    dessert.append(recipe)
-//                default:
-//                    snack.append(recipe)
-//            }
+            
             if(recipe.meal! == "breakfast"){
                 breakfast.append(recipe)
-                print("breakfast count: \(breakfast.count)")
-                print("Recipe meal: \(recipe.meal!)")
             }
-            else if(recipe.meal! == "lunch"){
+            else if(recipe.meal! == "lunch" ){
                 lunch.append(recipe)
-                 print("lunch count: \(lunch.count)")
             }
-            else if(recipe.meal! == "dinner"){
+            else if(recipe.meal! == "dinner" ){
                 dinner.append(recipe)
-                 print("dinner count: \(dinner.count)")
-            }else if(recipe.meal! == "dessert"){
+            }else if(recipe.meal! == "dessert" ){
                 dessert.append(recipe)
-                print("dessert count: \(dessert.count)")
-            }else{
+            }else if (recipe.meal! == "snack" ){
                 snack.append(recipe)
-                 print("snack count: \(snack.count)")
             }
         }
         breakfast = uniqueElementsFrom(array: breakfast)
         lunch = uniqueElementsFrom(array: lunch)
-         dinner = uniqueElementsFrom(array: dinner)
-         dessert = uniqueElementsFrom(array: dessert)
-         snack = uniqueElementsFrom(array: snack)
+        dinner = uniqueElementsFrom(array: dinner)
+        dessert = uniqueElementsFrom(array: dessert)
+        snack = uniqueElementsFrom(array: snack)
+        
         tableView.reloadData()
+        
     }
     func uniqueElementsFrom(array: [Recipes]) -> [Recipes]{
-        var set = Set<Recipes>()
-        let result = array.filter{
-            guard !set.contains($0) else{
-                return false
+        //Create an empty Set to track unique items
+        var set = Set<String>()
+//        let result = array.filter {
+//            guard !set.contains($0) else {
+//                //If the set already contains this object, return false
+//                //so we skip it
+//                return false
+//            }
+//            //Add this item to the set since it will now be in the array
+//            set.insert($0)
+//            //Return true so that filtered array will contain this item.
+//            return true
+//        }
+        var unique = [Recipes]()
+        for uniqueRecipe in array{
+            if !set.contains(uniqueRecipe.name!){
+                unique.append(uniqueRecipe)
+                set.insert(uniqueRecipe.name!)
             }
-            set.insert($0)
-            return true
         }
-        return result
+        return unique
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -115,9 +114,7 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     func numberOfSections(in tableView: UITableView) -> Int {
             return meal_type.count
     }
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return
-//    }
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if(!recipes.isEmpty){
             return meal_type[section]
@@ -139,7 +136,6 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                                 cell.foodImage.image = UIImage(data: data as Data)
                             }
                         }
-                print("breakfast")
                 case 1:
                         print(indexPath.row)
                         cell.foodTitle.text = lunch[indexPath.row].name
@@ -149,7 +145,6 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                                 cell.foodImage.image = UIImage(data: data as Data)
                             }
                         }
-                    print("lunch")
                 case 2:
                         cell.foodTitle.text = dinner[indexPath.row].name
                         cell.foodDescription.text = dinner[indexPath.row].descriptions
@@ -157,8 +152,7 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                             if let data = NSData(contentsOf: url as URL){
                                 cell.foodImage.image = UIImage(data: data as Data)
                             }
-                        }
-                    print("dinner")
+                    }
                 case 3:
                         cell.foodTitle.text = dessert[indexPath.row].name
                         cell.foodDescription.text = dessert[indexPath.row].descriptions
@@ -167,7 +161,6 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                                     cell.foodImage.image = UIImage(data: data as Data)
                                 }
                             }
-                    print("dessert")
                 default:
                         cell.foodTitle.text = snack[indexPath.row].name
                         cell.foodDescription.text = snack[indexPath.row].descriptions
@@ -176,64 +169,19 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                                 cell.foodImage.image = UIImage(data: data as Data)
                             }
                         }
-                    print("snack")
             }
        }
-       
-        //cell.foodImage.image = UIImage(named: "donut")
         return cell
-}
-    
-
-    @IBAction func addRecipe(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "addRecipeSegue", sender: self)
     }
-
-    //func deleteCellRow(_ sender: SavedRecipeTableViewCell){
-      //  guard let tappedIndexPath = tableView.indexPath(for: sender) else { return }
-        // Delete the row
-        //meal_array.remove(at: tappedIndexPath.row)
-        //tableView.deleteRows(at: [tappedIndexPath], with: .automatic)
-
-        
-    //}
     
-   // override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-     //   if editingStyle == UITableViewCellEditingStyle.Delete {
-       //     numbers.removeAtIndex(indexPath.row)
-        //    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-       // }
-   // }
+
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    /*func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == UITableViewCellEditingStyle.delete) {
-            // handle delete (by removing the data from your array and updating the tableview)
-            meal_array.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            
-        }
-    }*/
+
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             deleteRecipe(at: indexPath)
-//            switch indexPath.section{
-//                case 0:
-//                    breakfast.remove(at: indexPath.row)
-//                    break
-//                case 1:
-//                    lunch.remove(at: indexPath.row)
-//                    break
-//                case 2:
-//                    dinner.remove(at: indexPath.row)
-//                    break
-//                case 3:
-//                    dessert.remove(at: indexPath.row)
-//                default:
-//                    snack.remove(at: indexPath.row)
-//                    break
-//            }
         }
     }
     

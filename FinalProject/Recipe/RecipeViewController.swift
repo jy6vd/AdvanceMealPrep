@@ -14,7 +14,6 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     
     var filteredRecipes: [Recipe] = []
     
-//    let viewRecipeViewController = AddRecipeViewController()
     
     var isSearchingRecipe = false
     @IBOutlet weak var recipeTableView: UITableView!
@@ -46,13 +45,9 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         if(isSearchingRecipe){
             return filteredRecipes.count
         }
-        //return regions[section].companies.count
         return allRecipes[section].recipes.count
         
     }
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 160
-//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! RecipeTableViewCell
@@ -90,12 +85,10 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         } else {
             
             isSearchingRecipe = true
-            //var filteredRecipes: [Recipe] = []
-           // filterRecipe = allRecipes.filter{ $0.title.range == searchText/*(of: searchText, options: [.caseInsensitive]) != nil */ }
             for recipe in allRecipes {
-                filteredRecipes.append(contentsOf: recipe.recipes.filter{ $0.title == searchText })
-//                filteredRecipes = recipe.recipes.filter($0.title.range == searchText)
-          }
+                filteredRecipes.append(contentsOf: recipe.recipes.filter{ $0.title.lowercased().contains(searchText) })
+         }
+            
             
 
             //filterRecipe[].recipes = filteredRecipes
