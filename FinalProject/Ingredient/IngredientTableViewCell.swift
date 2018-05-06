@@ -1,15 +1,17 @@
 //
-//  IngredientsTableViewCell.swift
+//  IngredientTableViewCell.swift
 //  FinalProject
 //
-//  Created by Landen Eagan on 4/12/18.
+//  Created by Landen Eagan on 5/6/18.
 //  Copyright © 2018 Jonathan Yee. All rights reserved.
 //
 
 import UIKit
 
-class IngredientsTableViewCell: UITableViewCell {
+class IngredientTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var myLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
