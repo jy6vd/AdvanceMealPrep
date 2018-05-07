@@ -38,14 +38,18 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         if(isSearchingRecipe){
-            return 0
+            return 1
         }else{
              return allRecipes.count
         }
         
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return allRecipes[section].mealType
+        if(isSearchingRecipe){
+            return nil
+        }else{
+            return allRecipes[section].mealType
+        }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(isSearchingRecipe){
@@ -59,7 +63,6 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! RecipeTableViewCell
         if(isSearchingRecipe){
             cell.foodTitle.text = filteredRecipes[indexPath.row].title
-            print(filteredRecipes[indexPath.row].description)
             cell.foodDescription.text = filteredRecipes[indexPath.row].description
             if let url = NSURL(string: filteredRecipes[indexPath.row].picture){
                 if let data = NSData(contentsOf: url as URL){
@@ -81,7 +84,6 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
-    //needs to be fixed
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         if searchBar.text == nil || searchBar.text == "" {
             
@@ -92,15 +94,14 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         } else {
             isSearchingRecipe = true
             filteredRecipes = allRecipeToFilter.filter{ $0.title.lowercased().contains(searchText.lowercased()) }
+             recipeTableView.reloadData()
             }
-            recipeTableView.reloadData()
     }
     func addRecipeToFilter(){
         var num = 0
         for recipe in allRecipes{
             for uniqueRecipe in recipe.recipes{
                 allRecipeToFilter.append(uniqueRecipe)
-                //print(allRecipeToFilter[num].description)
                 num = num + 1
             }
         }
