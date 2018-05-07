@@ -12,6 +12,7 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
     var passedRecipe: Recipe!
     var passedMealType: String?
     var hugeDirection: String = ""
+    var passDay : String = ""
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch(tabBar.selectedSegmentIndex){
@@ -75,6 +76,7 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
             recipe.setValue(passedRecipe.servingSize, forKey: "serving")
             recipe.setValue(hugeDirection, forKey: "direction")
             recipe.setValue(passedRecipe.picture, forKey: "picture")
+            recipe.setValue(passDay, forKey: "day")
 
         for x in passedRecipe.ingredients{
              let ingredient = NSManagedObject(entity: entity2!, insertInto: context)
@@ -93,6 +95,8 @@ class AddRecipeViewController: UIViewController, UITableViewDataSource, UITableV
             print("Could not save recipe")
         }
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

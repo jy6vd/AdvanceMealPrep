@@ -16,6 +16,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     
     var allRecipeToFilter = [Recipe]()
     
+    var passDay: String = ""
     
     var isSearchingRecipe = false
     @IBOutlet weak var recipeTableView: UITableView!
@@ -112,6 +113,11 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
             let secondViewController = segue.destination as? AddRecipeViewController
             let passRecipe = allRecipes[indexPath.section].recipes[indexPath.row]
             let passMealType = allRecipes[indexPath.section].mealType
+            
+            let passDay: String?
+            passDay = self.passDay
+            secondViewController?.passDay = passDay!
+            
             secondViewController?.passedMealType = passMealType
             secondViewController?.passedRecipe = passRecipe
         }

@@ -40,7 +40,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="days" destination="zL3-5F-gQk" id="BMX-eY-7Xm"/>
-                                            <segue destination="ryH-D1-ik6" kind="show" id="UqD-Y8-Cti"/>
+                                            <segue destination="ryH-D1-ik6" kind="show" identifier="DaySegue" id="UqD-Y8-Cti"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

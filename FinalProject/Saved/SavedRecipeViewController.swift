@@ -18,7 +18,8 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     var snack: [Recipes] = []
     var recipes: [Recipes] = []
     var ingredients: [Ingredients] = []
-    var recipeWithIngredient: [AnyObject] = []
+    var recipeWithDays: [Recipes] = []
+    var passDay: String?
     
     @IBOutlet weak var tableView: UITableView!
     override func viewWillAppear(_ animated: Bool) {
@@ -33,7 +34,12 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
             ingredients = try managedContext.fetch(fetchRequest2)
 
             recipes = result as! [Recipes]
-            
+            //print(passDay!)
+            for recipe in recipes{
+                if (recipe.day! == passDay!){
+                    recipeWithDays.append(recipe)
+                }
+            }
             seperateRecipes()
         }
         catch{
@@ -41,7 +47,7 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     func seperateRecipes(){
-        for recipe in recipes{
+        for recipe in recipeWithDays{
             
             if(recipe.meal! == "breakfast"){
                 breakfast.append(recipe)
@@ -78,6 +84,7 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
         }
         return unique
     }
+    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch(section){
@@ -219,7 +226,14 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
             secondViewController?.ingredients = ingredients
 
             
-    }
+        }
+        if segue.identifier == "addRecipeSegue"{
+            
+            let secondViewController = segue.destination as? RecipeViewController
+            let passDay: String?
+            passDay = self.passDay
+            secondViewController?.passDay = passDay!
+        }
 }
     func deleteRecipe(at indexPath: IndexPath){
         let recipe = recipes[indexPath.row]

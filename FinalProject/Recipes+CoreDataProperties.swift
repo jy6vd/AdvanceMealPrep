@@ -24,12 +24,13 @@ class Recipes: NSManagedObject{
     @NSManaged public var direction: String?
     @NSManaged public var picture: String?
     @NSManaged public var rawIngredients: NSOrderedSet?
+    @NSManaged public var day: String?
     
     var ingredients: [Ingredients]?{
         return self.rawIngredients?.array as? [Ingredients]
     }
     
-    convenience init?(name: String?,descriptions: String?, meal: String?, serving: String?, direction: String?, picture: String?){
+    convenience init?(name: String?,descriptions: String?, meal: String?, serving: String?, direction: String?, picture: String?, day: String?){
         
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         
@@ -44,6 +45,7 @@ class Recipes: NSManagedObject{
         self.direction = direction
         self.name = name
         self.picture = picture
+        self.day = day
 }
     
 

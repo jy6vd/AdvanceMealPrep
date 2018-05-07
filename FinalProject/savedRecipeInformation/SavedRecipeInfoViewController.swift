@@ -11,7 +11,7 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
     var passedRecipe: Recipe!
     var passedMealType: String?
     var ingredients: [Ingredients] = []
-     var filteredIngredient: [Ingredients] = []
+    var filteredIngredient: [Ingredients] = []
     
     func uniqueElementsFrom(array: [Ingredients]) -> [Ingredients]{
         var set = Set<Ingredients>()

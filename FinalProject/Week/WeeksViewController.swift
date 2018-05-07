@@ -30,8 +30,17 @@ class WeeksViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         return cell
     }
-    
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DaySegue"{
+            let indexPath = self.tableview.indexPathForSelectedRow!
+            let secondViewController = segue.destination as? SavedRecipeViewController
+            var passDay: String?
+            passDay = days[indexPath.row]
+            secondViewController?.passDay = passDay!
+            
+        }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
