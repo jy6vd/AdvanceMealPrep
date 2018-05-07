@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "1x chef hat.jpg",
+      "filename" : "1x chef hat.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "2x chef hat.jpg",
+      "filename" : "2x chef hat.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "3x chef hat.jpg",
+      "filename" : "3x chef hat.png",
       "scale" : "3x"
     }
   ],

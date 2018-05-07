@@ -28,7 +28,6 @@ class WeeksViewController: UIViewController, UITableViewDataSource, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "dayCell", for: indexPath) as! WeekTableViewCell
         cell.days.text = days[indexPath.row];
         
-        
         return cell
     }
     
