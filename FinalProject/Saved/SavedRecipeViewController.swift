@@ -34,7 +34,6 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
             ingredients = try managedContext.fetch(fetchRequest2)
 
             recipes = result as! [Recipes]
-            //print(passDay!)
             for recipe in recipes{
                 if (recipe.day! == passDay){
                     recipeWithDays.append(recipe)
@@ -243,7 +242,6 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
 }
     func deleteRecipe(at indexPath: IndexPath){
         let recipe = recipes[indexPath.row]
-        //var num = 0
         guard let managedContext = recipe.managedObjectContext else{
             return
         }
@@ -256,7 +254,6 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
                 if(ingredientRecipe.recipe?.name == recipe.name){
                     managedContext.delete(ingredientRecipe)
                 }
-                //num = num + 1
             }
             recipes.remove(at: indexPath.row)
             switch indexPath.section{

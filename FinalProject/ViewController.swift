@@ -164,15 +164,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            deleteRecipe(at: indexPath)
-        }
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "savedRecipeSegue"{
+        if segue.identifier == "allSavedSeque"{
             let indexPath = self.tableview.indexPathForSelectedRow!
             let sectionNumber = indexPath.section
             let secondViewController = segue.destination as? SavedRecipeInfoViewController
@@ -222,48 +215,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             secondViewController?.ingredients = ingredients
             
             
-        }
-    }
-    func deleteRecipe(at indexPath: IndexPath){
-        let recipe = recipes[indexPath.row]
-        //var num = 0
-        guard let managedContext = recipe.managedObjectContext else{
-            return
-        }
-        managedContext.delete(recipe)
-        
-        do{
-            try managedContext.save()
-            
-            for ingredientRecipe in ingredients{
-                if(ingredientRecipe.recipe?.name == recipe.name){
-                    managedContext.delete(ingredientRecipe)
-                }
-                //num = num + 1
-            }
-            recipes.remove(at: indexPath.row)
-            switch indexPath.section{
-            case 0:
-                breakfast.remove(at: indexPath.row)
-                break
-            case 1:
-                lunch.remove(at: indexPath.row)
-                break
-            case 2:
-                dinner.remove(at: indexPath.row)
-                break
-            case 3:
-                dessert.remove(at: indexPath.row)
-            default:
-                snack.remove(at: indexPath.row)
-                break
-            }
-            
-            tableview.deleteRows(at: [indexPath], with: .automatic)
-        }catch{
-            print("Could not delete")
-            
-            tableview.reloadRows(at: [indexPath], with: .automatic)
         }
     }
     
