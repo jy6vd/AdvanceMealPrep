@@ -10,7 +10,7 @@ import UIKit
 
 class IngredientViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let list = ["Milk", "Honey", "Bread", "Tacos", "Tomatoes"]
+    let list = ["Test", "Test", "Test", "Test", "Test"]
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return(list.count)
