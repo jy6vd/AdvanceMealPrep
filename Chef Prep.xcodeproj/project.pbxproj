@@ -62,17 +62,17 @@
 		237C817120867C8800C3580F /* SavedRecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipeTableViewCell.swift; sourceTree = "<group>"; };
 		23C66368207DC1E600F74183 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		23C6636A207DC1FA00F74183 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
-		23E4722420584099004E4DB8 /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		23E4722420584099004E4DB8 /* Chef Prep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chef Prep.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23E4722720584099004E4DB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23E4722920584099004E4DB8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		23E4722C20584099004E4DB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		23E4722E20584099004E4DB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23E4723120584099004E4DB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23E4723320584099004E4DB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		23E4723820584099004E4DB8 /* FinalProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinalProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		23E4723820584099004E4DB8 /* Chef PrepTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Chef PrepTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23E4723C20584099004E4DB8 /* FinalProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalProjectTests.swift; sourceTree = "<group>"; };
 		23E4723E20584099004E4DB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		23E4724320584099004E4DB8 /* FinalProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinalProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		23E4724320584099004E4DB8 /* Chef PrepUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Chef PrepUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23E4724720584099004E4DB8 /* FinalProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalProjectUITests.swift; sourceTree = "<group>"; };
 		23E4724920584099004E4DB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23EAC26F2076923100DA123E /* WeeksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeksViewController.swift; sourceTree = "<group>"; };
@@ -167,9 +167,9 @@
 		23E4722520584099004E4DB8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				23E4722420584099004E4DB8 /* FinalProject.app */,
-				23E4723820584099004E4DB8 /* FinalProjectTests.xctest */,
-				23E4724320584099004E4DB8 /* FinalProjectUITests.xctest */,
+				23E4722420584099004E4DB8 /* Chef Prep.app */,
+				23E4723820584099004E4DB8 /* Chef PrepTests.xctest */,
+				23E4724320584099004E4DB8 /* Chef PrepUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -249,9 +249,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		23E4722320584099004E4DB8 /* FinalProject */ = {
+		23E4722320584099004E4DB8 /* Chef Prep */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 23E4724C20584099004E4DB8 /* Build configuration list for PBXNativeTarget "FinalProject" */;
+			buildConfigurationList = 23E4724C20584099004E4DB8 /* Build configuration list for PBXNativeTarget "Chef Prep" */;
 			buildPhases = (
 				23E4722020584099004E4DB8 /* Sources */,
 				23E4722120584099004E4DB8 /* Frameworks */,
@@ -261,14 +261,14 @@
 			);
 			dependencies = (
 			);
-			name = FinalProject;
+			name = "Chef Prep";
 			productName = FinalProject;
-			productReference = 23E4722420584099004E4DB8 /* FinalProject.app */;
+			productReference = 23E4722420584099004E4DB8 /* Chef Prep.app */;
 			productType = "com.apple.product-type.application";
 		};
-		23E4723720584099004E4DB8 /* FinalProjectTests */ = {
+		23E4723720584099004E4DB8 /* Chef PrepTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 23E4724F20584099004E4DB8 /* Build configuration list for PBXNativeTarget "FinalProjectTests" */;
+			buildConfigurationList = 23E4724F20584099004E4DB8 /* Build configuration list for PBXNativeTarget "Chef PrepTests" */;
 			buildPhases = (
 				23E4723420584099004E4DB8 /* Sources */,
 				23E4723520584099004E4DB8 /* Frameworks */,
@@ -279,14 +279,14 @@
 			dependencies = (
 				23E4723A20584099004E4DB8 /* PBXTargetDependency */,
 			);
-			name = FinalProjectTests;
+			name = "Chef PrepTests";
 			productName = FinalProjectTests;
-			productReference = 23E4723820584099004E4DB8 /* FinalProjectTests.xctest */;
+			productReference = 23E4723820584099004E4DB8 /* Chef PrepTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		23E4724220584099004E4DB8 /* FinalProjectUITests */ = {
+		23E4724220584099004E4DB8 /* Chef PrepUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 23E4725220584099004E4DB8 /* Build configuration list for PBXNativeTarget "FinalProjectUITests" */;
+			buildConfigurationList = 23E4725220584099004E4DB8 /* Build configuration list for PBXNativeTarget "Chef PrepUITests" */;
 			buildPhases = (
 				23E4723F20584099004E4DB8 /* Sources */,
 				23E4724020584099004E4DB8 /* Frameworks */,
@@ -297,9 +297,9 @@
 			dependencies = (
 				23E4724520584099004E4DB8 /* PBXTargetDependency */,
 			);
-			name = FinalProjectUITests;
+			name = "Chef PrepUITests";
 			productName = FinalProjectUITests;
-			productReference = 23E4724320584099004E4DB8 /* FinalProjectUITests.xctest */;
+			productReference = 23E4724320584099004E4DB8 /* Chef PrepUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -328,7 +328,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 23E4721F20584099004E4DB8 /* Build configuration list for PBXProject "FinalProject" */;
+			buildConfigurationList = 23E4721F20584099004E4DB8 /* Build configuration list for PBXProject "Chef Prep" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -341,9 +341,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				23E4722320584099004E4DB8 /* FinalProject */,
-				23E4723720584099004E4DB8 /* FinalProjectTests */,
-				23E4724220584099004E4DB8 /* FinalProjectUITests */,
+				23E4722320584099004E4DB8 /* Chef Prep */,
+				23E4723720584099004E4DB8 /* Chef PrepTests */,
+				23E4724220584099004E4DB8 /* Chef PrepUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -429,12 +429,12 @@
 /* Begin PBXTargetDependency section */
 		23E4723A20584099004E4DB8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 23E4722320584099004E4DB8 /* FinalProject */;
+			target = 23E4722320584099004E4DB8 /* Chef Prep */;
 			targetProxy = 23E4723920584099004E4DB8 /* PBXContainerItemProxy */;
 		};
 		23E4724520584099004E4DB8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 23E4722320584099004E4DB8 /* FinalProject */;
+			target = 23E4722320584099004E4DB8 /* Chef Prep */;
 			targetProxy = 23E4724420584099004E4DB8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -613,7 +613,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FinalProject.app/FinalProject";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Chef Prep.app/Chef Prep";
 			};
 			name = Debug;
 		};
@@ -630,7 +630,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FinalProject.app/FinalProject";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Chef Prep.app/Chef Prep";
 			};
 			name = Release;
 		};
@@ -669,7 +669,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		23E4721F20584099004E4DB8 /* Build configuration list for PBXProject "FinalProject" */ = {
+		23E4721F20584099004E4DB8 /* Build configuration list for PBXProject "Chef Prep" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				23E4724A20584099004E4DB8 /* Debug */,
@@ -678,7 +678,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		23E4724C20584099004E4DB8 /* Build configuration list for PBXNativeTarget "FinalProject" */ = {
+		23E4724C20584099004E4DB8 /* Build configuration list for PBXNativeTarget "Chef Prep" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				23E4724D20584099004E4DB8 /* Debug */,
@@ -687,7 +687,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		23E4724F20584099004E4DB8 /* Build configuration list for PBXNativeTarget "FinalProjectTests" */ = {
+		23E4724F20584099004E4DB8 /* Build configuration list for PBXNativeTarget "Chef PrepTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				23E4725020584099004E4DB8 /* Debug */,
@@ -696,7 +696,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		23E4725220584099004E4DB8 /* Build configuration list for PBXNativeTarget "FinalProjectUITests" */ = {
+		23E4725220584099004E4DB8 /* Build configuration list for PBXNativeTarget "Chef PrepUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				23E4725320584099004E4DB8 /* Debug */,

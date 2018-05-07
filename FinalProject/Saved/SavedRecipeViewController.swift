@@ -48,20 +48,24 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     }
     func seperateRecipes(){
         for recipe in recipeWithDays{
+            if (recipe.name != nil){
+                if(recipe.meal! == "breakfast"){
+                    breakfast.append(recipe)
+                }
+                else if(recipe.meal! == "lunch" ){
+                    lunch.append(recipe)
+                }
+                else if(recipe.meal! == "dinner" ){
+                    dinner.append(recipe)
+                }else if(recipe.meal! == "dessert" ){
+                    dessert.append(recipe)
+                }else if (recipe.meal! == "snack" ){
+                    snack.append(recipe)
+                }
+            }else{
+                print("deleted")
+            }
             
-            if(recipe.meal! == "breakfast"){
-                breakfast.append(recipe)
-            }
-            else if(recipe.meal! == "lunch" ){
-                lunch.append(recipe)
-            }
-            else if(recipe.meal! == "dinner" ){
-                dinner.append(recipe)
-            }else if(recipe.meal! == "dessert" ){
-                dessert.append(recipe)
-            }else if (recipe.meal! == "snack" ){
-                snack.append(recipe)
-            }
         }
         breakfast = uniqueElementsFrom(array: breakfast)
         lunch = uniqueElementsFrom(array: lunch)
@@ -109,7 +113,7 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if(!recipes.isEmpty){
+        if(!recipeWithDays.isEmpty){
             return meal_type[section]
         }
         else{
