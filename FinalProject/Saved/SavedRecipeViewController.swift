@@ -77,9 +77,11 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
         var set = Set<String>()
         var unique = [Recipes]()
         for uniqueRecipe in array{
-            if !set.contains(uniqueRecipe.name!){
-                unique.append(uniqueRecipe)
-                set.insert(uniqueRecipe.name!)
+            if(uniqueRecipe.name != nil){
+                if !set.contains(uniqueRecipe.name!) {
+                    unique.append(uniqueRecipe)
+                    set.insert(uniqueRecipe.name!)
+                }
             }
         }
         return unique

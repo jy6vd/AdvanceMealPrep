@@ -580,10 +580,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UEc-9D-IFI"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="MWl-6r-bz0"/>
+                    <navigationItem key="navigationItem" title="Title" id="UWl-6r-uD1">
+                        <barButtonItem key="rightBarButtonItem" title="Delete" id="gct-HW-w6G">
+                            <connections>
+                                <action selector="deleteRecipe:" destination="288-4v-WSK" id="fuK-6Z-8X3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="foodImage" destination="XRz-vc-jIc" id="PrK-2C-cOc"/>
-                        <outlet property="foodTitle" destination="MWl-6r-bz0" id="9Sk-19-NcJ"/>
+                        <outlet property="foodName" destination="UWl-6r-uD1" id="pI4-VM-EOe"/>
                         <outlet property="ingredientTableView" destination="5d5-rc-Za0" id="Z4U-MB-0bg"/>
                         <outlet property="servingSizeLabel" destination="aom-ps-kQg" id="x9g-Le-T37"/>
                         <outlet property="tabBar" destination="WTM-nj-JPs" id="7QG-zg-URS"/>

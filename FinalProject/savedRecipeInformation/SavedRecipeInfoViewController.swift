@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import CoreData
 class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var passedRecipe: Recipe!
     var passedMealType: String?
+    var recipe: [Recipes] = []
     var ingredients: [Ingredients] = []
     var filteredIngredient: [Ingredients] = []
     
@@ -39,6 +41,7 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
         return 1
     }
     
+    @IBOutlet weak var foodName: UINavigationItem!
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientCell", for: indexPath) as! SavedRecipeInfoTableViewCell
         switch(tabBar.selectedSegmentIndex){
@@ -60,7 +63,6 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
     @IBOutlet weak var foodImage: UIImageView!
     @IBOutlet weak var tabBar: UISegmentedControl!
     @IBOutlet weak var servingSizeLabel: UILabel!
-    @IBOutlet weak var foodTitle: UINavigationItem!
     @IBOutlet weak var ingredientTableView: UITableView!
     var direction: [String] = []
     var hugeDirection: String = ""
@@ -77,7 +79,7 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
         super.viewDidLoad()
         ingredientTableView.dataSource = self
         ingredientTableView.delegate = self
-        foodTitle.title = foodname
+        foodName.title = foodname
         ingredients = uniqueElementsFrom(array: ingredients)
         for uniqueIngredient in ingredients{
             if(foodname == uniqueIngredient.recipe?.name && uniqueIngredient.recipe?.name != nil){
@@ -95,6 +97,30 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func deleteRecipe(_ sender: Any) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
+            return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequet = NSFetchRequest<NSFetchRequestResult>(entityName: "Recipes")
+        do{
+            let result = try managedContext.fetch(fetchRequet)
+            
+            recipe = result as! [Recipes]
+            
+            for recipe in recipe{
+                if(foodname == recipe.name!){
+                    managedContext.delete(recipe)
+                }
+            }
+             try managedContext.save()
+            let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+            self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true)
+            
+        }catch{
+            print("Could not delete")
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
