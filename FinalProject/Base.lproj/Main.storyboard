@@ -13,7 +13,7 @@
         <!--Week-->
         <scene sceneID="tB7-Kf-OQ4">
             <objects>
-                <viewController id="Izs-c6-I6v" customClass="WeeksViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Izs-c6-I6v" customClass="WeeksViewController" customModule="Chef_Prep" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nx0-wr-j5u">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dayCell" textLabel="zL3-5F-gQk" style="IBUITableViewCellStyleDefault" id="aSa-rP-OIX" userLabel="Days" customClass="WeekTableViewCell" customModule="FinalProject" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dayCell" textLabel="zL3-5F-gQk" style="IBUITableViewCellStyleDefault" id="aSa-rP-OIX" userLabel="Days" customClass="WeekTableViewCell" customModule="Chef_Prep" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aSa-rP-OIX" id="Cjj-xo-DiV">
@@ -78,17 +78,17 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="ryH-D1-ik6" kind="relationship" relationship="rootViewController" id="Xsd-LP-qUF"/>
+                        <segue destination="8RC-SB-oYw" kind="relationship" relationship="rootViewController" id="l8U-BC-pAK"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tyj-eB-YQj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="628" y="480"/>
+            <point key="canvasLocation" x="-1526" y="1343"/>
         </scene>
         <!--Saved-->
         <scene sceneID="Y8U-aX-wbu">
             <objects>
-                <viewController storyboardIdentifier="Saved" id="ryH-D1-ik6" customClass="SavedRecipeViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Saved" id="ryH-D1-ik6" customClass="SavedRecipeViewController" customModule="Chef_Prep" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7tj-Xv-3IK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -97,7 +97,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="recipeCell" rowHeight="349" id="7Fb-wu-aRJ" customClass="SavedRecipeTableViewCell" customModule="FinalProject" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="recipeCell" rowHeight="349" id="7Fb-wu-aRJ" customClass="SavedRecipeTableViewCell" customModule="Chef_Prep" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="349"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Fb-wu-aRJ" id="y0f-LA-htQ">
@@ -179,7 +179,7 @@
         <!--Recipes-->
         <scene sceneID="7HX-uU-8gc">
             <objects>
-                <viewController id="9wr-Xf-I4c" customClass="RecipeViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9wr-Xf-I4c" customClass="RecipeViewController" customModule="Chef_Prep" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0y5-db-1up">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -193,7 +193,7 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="recipeCell" rowHeight="293" id="CCC-yt-dzY" customClass="RecipeTableViewCell" customModule="FinalProject" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="recipeCell" rowHeight="293" id="CCC-yt-dzY" customClass="RecipeTableViewCell" customModule="Chef_Prep" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="293"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CCC-yt-dzY" id="C6V-QG-QOM">
@@ -305,7 +305,7 @@
         <!--Ingredients-->
         <scene sceneID="Juw-81-FoY">
             <objects>
-                <viewController id="acv-gt-WIf" customClass="IngredientViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="acv-gt-WIf" customClass="IngredientViewController" customModule="Chef_Prep" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4MJ-32-fPb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -314,7 +314,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="MKy-16-g5a" rowHeight="140" style="IBUITableViewCellStyleDefault" id="ZPq-oh-8hN" customClass="IngredientTableViewCell" customModule="FinalProject" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="MKy-16-g5a" rowHeight="140" style="IBUITableViewCellStyleDefault" id="ZPq-oh-8hN" customClass="IngredientTableViewCell" customModule="Chef_Prep" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZPq-oh-8hN" id="bux-Dt-gTT">
@@ -382,7 +382,7 @@
         <!--Title-->
         <scene sceneID="UAl-Pq-8Ct">
             <objects>
-                <viewController id="gCC-H0-Cuw" customClass="AddRecipeViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gCC-H0-Cuw" customClass="AddRecipeViewController" customModule="Chef_Prep" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0eB-VQ-Cse">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -397,7 +397,7 @@
                                     <constraint firstAttribute="height" constant="359" id="jrk-by-suH"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ingredientCell" id="TRJ-VQ-GjO" customClass="IngredientDisplayTableViewCell" customModule="FinalProject" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ingredientCell" id="TRJ-VQ-GjO" customClass="IngredientDisplayTableViewCell" customModule="Chef_Prep" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TRJ-VQ-GjO" id="2gC-SK-TLJ">
@@ -492,7 +492,7 @@
         <!--Title-->
         <scene sceneID="II7-rN-kLj">
             <objects>
-                <viewController id="288-4v-WSK" customClass="SavedRecipeInfoViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="288-4v-WSK" customClass="SavedRecipeInfoViewController" customModule="Chef_Prep" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e2H-aB-Fue">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -507,7 +507,7 @@
                                     <constraint firstAttribute="height" constant="359" id="FQr-sO-7er"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ingredientCell" id="CGI-03-f3o" customClass="SavedRecipeInfoTableViewCell" customModule="FinalProject" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ingredientCell" id="CGI-03-f3o" customClass="SavedRecipeInfoTableViewCell" customModule="Chef_Prep" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CGI-03-f3o" id="uIb-bb-Na2">
@@ -599,11 +599,95 @@
             </objects>
             <point key="canvasLocation" x="1764" y="1343"/>
         </scene>
+        <!--All-->
+        <scene sceneID="RUY-Dr-CYK">
+            <objects>
+                <viewController id="8RC-SB-oYw" customClass="ViewController" customModule="Chef_Prep" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3s8-Dj-NIe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YNR-Bn-Pca">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="recipeCell" rowHeight="349" id="PPY-Mo-4Sc" customClass="SavedRecipeTableViewCell" customModule="Chef_Prep" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="349"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PPY-Mo-4Sc" id="Pd7-6d-6X6">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="348.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hpq-AQ-Lj3">
+                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="118"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="117.5" id="7zH-0u-jv9"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="90" id="qg4-Ix-7VB"/>
+                                                        <constraint firstAttribute="width" constant="120" id="t4C-MV-OMa"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3pr-EM-oN4">
+                                                    <rect key="frame" x="120" y="0.0" width="255" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1K-A7-YFd">
+                                                    <rect key="frame" x="0.0" y="118" width="375" height="230"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="375" id="Azv-CZ-t3W"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="H1K-A7-YFd" secondAttribute="trailing" id="8fC-Vd-diR"/>
+                                                <constraint firstAttribute="trailing" secondItem="3pr-EM-oN4" secondAttribute="trailing" id="DZi-Li-bRG"/>
+                                                <constraint firstItem="H1K-A7-YFd" firstAttribute="top" secondItem="hpq-AQ-Lj3" secondAttribute="bottom" id="Dxo-Y7-owf"/>
+                                                <constraint firstItem="hpq-AQ-Lj3" firstAttribute="leading" secondItem="Pd7-6d-6X6" secondAttribute="leading" id="EZJ-IK-j9n"/>
+                                                <constraint firstItem="hpq-AQ-Lj3" firstAttribute="top" secondItem="Pd7-6d-6X6" secondAttribute="top" id="Lb6-Oc-bhp"/>
+                                                <constraint firstItem="3pr-EM-oN4" firstAttribute="leading" secondItem="hpq-AQ-Lj3" secondAttribute="trailing" id="W5A-8e-Yag"/>
+                                                <constraint firstAttribute="bottom" secondItem="H1K-A7-YFd" secondAttribute="bottom" id="Wow-yY-vmN"/>
+                                                <constraint firstItem="3pr-EM-oN4" firstAttribute="top" secondItem="Pd7-6d-6X6" secondAttribute="top" id="Xqt-8Y-jT8"/>
+                                                <constraint firstItem="H1K-A7-YFd" firstAttribute="leading" secondItem="Pd7-6d-6X6" secondAttribute="leading" id="h5Q-hw-dgZ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="foodDescription" destination="H1K-A7-YFd" id="gMf-jc-asu"/>
+                                            <outlet property="foodImage" destination="hpq-AQ-Lj3" id="Sl4-oY-OcO"/>
+                                            <outlet property="foodTitle" destination="3pr-EM-oN4" id="kg6-8J-XqL"/>
+                                            <segue destination="288-4v-WSK" kind="show" id="6Zr-aW-mP9"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YNR-Bn-Pca" firstAttribute="trailing" secondItem="4pB-xp-ctf" secondAttribute="trailing" id="17A-Wt-265"/>
+                            <constraint firstItem="YNR-Bn-Pca" firstAttribute="bottom" secondItem="4pB-xp-ctf" secondAttribute="bottom" id="Kht-ao-Sy9"/>
+                            <constraint firstItem="YNR-Bn-Pca" firstAttribute="top" secondItem="4pB-xp-ctf" secondAttribute="top" id="Pec-3L-OOD"/>
+                            <constraint firstItem="YNR-Bn-Pca" firstAttribute="leading" secondItem="4pB-xp-ctf" secondAttribute="leading" id="pWb-l5-Dmx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4pB-xp-ctf"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Saved" image="favorite" selectedImage="favorite" id="EdI-RV-3nE"/>
+                    <navigationItem key="navigationItem" title="All" id="gWZ-1v-41h"/>
+                    <connections>
+                        <outlet property="tableview" destination="YNR-Bn-Pca" id="qdW-Or-mEZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pj6-Wm-Dsh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1527" y="2186"/>
+        </scene>
     </scenes>
     <resources>
         <image name="favorite" width="40" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UqD-Y8-Cti"/>
+        <segue reference="6Zr-aW-mP9"/>
     </inferredMetricsTieBreakers>
 </document>
