@@ -19,7 +19,7 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
     var recipes: [Recipes] = []
     var ingredients: [Ingredients] = []
     var recipeWithDays: [Recipes] = []
-    var passDay: String?
+    var passDay: String = ""
     
     @IBOutlet weak var tableView: UITableView!
     override func viewWillAppear(_ animated: Bool) {
@@ -36,7 +36,7 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
             recipes = result as! [Recipes]
             //print(passDay!)
             for recipe in recipes{
-                if (recipe.day! == passDay!){
+                if (recipe.day! == passDay){
                     recipeWithDays.append(recipe)
                 }
             }
