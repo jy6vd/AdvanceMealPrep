@@ -24,6 +24,7 @@ class WeeksViewController: UIViewController, UITableViewDataSource, UITableViewD
         return 95
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dayCell", for: indexPath) as! WeekTableViewCell
         cell.days.text = days[indexPath.row];
