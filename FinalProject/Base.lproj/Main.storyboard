@@ -289,7 +289,7 @@
         <scene sceneID="uuC-uL-jqo">
             <objects>
                 <navigationController id="aQT-Hx-Wkd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Ingredients" id="bbC-oH-Sxo"/>
+                    <tabBarItem key="tabBarItem" title="Ingredients" image="shopping" selectedImage="shopping" id="bbC-oH-Sxo"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pzd-cm-KIp">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -369,7 +369,7 @@
         <scene sceneID="D4Z-C8-pUN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Q2l-lB-eCj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Week" id="qYN-Qr-KXR"/>
+                    <tabBarItem key="tabBarItem" title="Week" image="hat" selectedImage="hat" id="qYN-Qr-KXR"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tfU-D1-q7W">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -798,5 +798,7 @@
     </scenes>
     <resources>
         <image name="favorite" width="40" height="36"/>
+        <image name="hat" width="40" height="36"/>
+        <image name="shopping" width="32" height="36"/>
     </resources>
 </document>
