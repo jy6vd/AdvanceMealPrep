@@ -314,7 +314,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="MKy-16-g5a" rowHeight="140" style="IBUITableViewCellStyleDefault" id="ZPq-oh-8hN" customClass="IngredientTableViewCell" customModule="Chef_Prep" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="MKy-16-g5a" detailTextLabel="vYh-zR-5Od" rowHeight="140" style="IBUITableViewCellStyleSubtitle" id="ZPq-oh-8hN" customClass="IngredientTableViewCell" customModule="Chef_Prep" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZPq-oh-8hN" id="bux-Dt-gTT">
@@ -322,9 +322,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Ingredient" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MKy-16-g5a" userLabel="label">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="139.5"/>
+                                                    <rect key="frame" x="15" y="50" width="77.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vYh-zR-5Od">
+                                                    <rect key="frame" x="15" y="73.5" width="44" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -332,6 +339,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="label" destination="MKy-16-g5a" id="cQg-AU-vBl"/>
+                                            <outlet property="label2" destination="vYh-zR-5Od" id="L2O-mv-Z9i"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
