@@ -47,7 +47,7 @@ class SavedRecipeInfoViewController: UIViewController, UITableViewDelegate, UITa
         switch(tabBar.selectedSegmentIndex){
         case 0:
             cell.ingredientName.text = filteredIngredient[indexPath.row].name
-            cell.servingSize.text = ("\(ingredients[indexPath.row].quantity!) \(ingredients[indexPath.row].units!)")
+            cell.servingSize.text = ("\(filteredIngredient[indexPath.row].quantity!) \(filteredIngredient[indexPath.row].units!)")
         case 1:
             cell.ingredientName.text = direction[indexPath.row]
             cell.servingSize.text = " "

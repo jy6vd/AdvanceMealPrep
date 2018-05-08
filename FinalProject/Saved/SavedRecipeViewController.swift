@@ -229,7 +229,6 @@ class SavedRecipeViewController: UIViewController, UITableViewDelegate, UITableV
             secondViewController?.hugeDirection = passDirection!
             secondViewController?.foodDescription = pasDescription!
             secondViewController?.ingredients = ingredients
-
             
         }
         if segue.identifier == "addRecipeSegue"{
